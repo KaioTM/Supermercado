@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.URL;
 import object.Item;
 import object.Produto;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import javax.swing.JOptionPane;
  * @author KaioT
  */
 public class Estoque {
+    //String localEstoque = "/dados/dados/estoque.ser";
     public static ArrayList<Item> estoque = new ArrayList();
     
     public static void insereProduto(String id,String nome,Float preço,int quantidadeInserida){
@@ -81,7 +83,7 @@ public class Estoque {
         int i; 
         
         if (estoque.isEmpty()){
-            JOptionPane.showMessageDialog(null,"Produto não encontrado");
+            JOptionPane.showMessageDialog(null,"O estoque está vazio");
         }else{
             for (i=0;i<Estoque.estoque.size();i++){
                 if (estoque.get(i).getProduto().getNomeProduto().equalsIgnoreCase(nomeProduto)){
@@ -101,10 +103,10 @@ public class Estoque {
     }
     
      public static void carregaEstoque(){
-            
+        
         try
       {
-         FileInputStream fileIn = new FileInputStream("C:\\Users\\kaio.teixeira\\Downloads\\Projeto-POO-Supermercado-8a9742974d5d41e5ce5cb15850dfff05689e3f8a\\dados\\estoque.ser");
+         FileInputStream fileIn = new FileInputStream("C:\\Users\\KaioT\\Documents\\GitHub\\Supermercado\\dados\\dados\\estoque.ser");
          ObjectInputStream in = new ObjectInputStream(fileIn);
          Estoque.estoque = (ArrayList) in.readObject();
          in.close();
@@ -126,12 +128,12 @@ public class Estoque {
      public static void salvaEstoque (){
             
         try{
-                 FileOutputStream fileOut = new FileOutputStream("C:\\Users\\kaio.teixeira\\Downloads\\Projeto-POO-Supermercado-8a9742974d5d41e5ce5cb15850dfff05689e3f8a\\dados\\estoque.ser");
-                 ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                 FileOutputStream fileOut = new FileOutputStream("C:\\Users\\KaioT\\Documents\\GitHub\\Supermercado\\dados\\dados\\estoque.ser");
+                 ObjectOutputStream out = new ObjectOutputStream(fileOut);  
                  out.writeObject(Estoque.estoque);
                  out.close();
                  fileOut.close();
-                 System.out.printf("Serialized data is saved in C:\\Users\\kaio.teixeira\\Downloads\\Projeto-POO-Supermercado-8a9742974d5d41e5ce5cb15850dfff05689e3f8a\\dados\\estoque.ser");
+                 System.out.printf("Serialized data is saved in C:\\Users\\KaioT\\Documents\\GitHub\\Supermercado\\dados\\dados\\estoque.ser");
                }catch(IOException i){
                   i.printStackTrace();
                 }

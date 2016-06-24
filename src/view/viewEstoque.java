@@ -9,8 +9,8 @@ package view;
  *
  * @author kaio.teixeira
  */
-public class viewEstoque extends javax.swing.JFrame {
-
+public class viewEstoque extends JanelaPadrao {
+    
     /**
      * Creates new form viewEstoque
      */
@@ -29,6 +29,7 @@ public class viewEstoque extends javax.swing.JFrame {
 
         btnCadastrarProduto = new javax.swing.JButton();
         btnConsultarProduto = new javax.swing.JButton();
+        btnRemoverProduto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -47,26 +48,38 @@ public class viewEstoque extends javax.swing.JFrame {
             }
         });
 
+        btnRemoverProduto.setText("Remover Produto");
+        btnRemoverProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoverProdutoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(132, 132, 132)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnConsultarProduto)
-                    .addComponent(btnCadastrarProduto))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCadastrarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRemoverProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnConsultarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(147, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(80, 80, 80)
+                .addGap(94, 94, 94)
                 .addComponent(btnCadastrarProduto)
-                .addGap(73, 73, 73)
+                .addGap(18, 18, 18)
+                .addComponent(btnRemoverProduto)
+                .addGap(18, 18, 18)
                 .addComponent(btnConsultarProduto)
                 .addContainerGap(101, Short.MAX_VALUE))
         );
+
+        btnCadastrarProduto.getAccessibleContext().setAccessibleDescription("");
 
         pack();
         setLocationRelativeTo(null);
@@ -74,15 +87,24 @@ public class viewEstoque extends javax.swing.JFrame {
 
     private void btnCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarProdutoActionPerformed
         // TODO add your handling code here:
-        CadastrarProduto cadastro = new CadastrarProduto();
-        cadastro.setVisible(true);
+        CadastrarProduto cadastroProduto = new CadastrarProduto();
+        cadastroProduto.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnCadastrarProdutoActionPerformed
 
     private void btnConsultarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarProdutoActionPerformed
         // TODO add your handling code here:
          ConsultarProduto consulta = new ConsultarProduto();
          consulta.setVisible(true);
+         this.dispose();
     }//GEN-LAST:event_btnConsultarProdutoActionPerformed
+
+    private void btnRemoverProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverProdutoActionPerformed
+        // TODO add your handling code here:
+        RemoverProduto removerProduto = new RemoverProduto();
+        removerProduto.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRemoverProdutoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -122,5 +144,6 @@ public class viewEstoque extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrarProduto;
     private javax.swing.JButton btnConsultarProduto;
+    private javax.swing.JButton btnRemoverProduto;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,8 @@
         <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
             <name>Projeto - Supermercado</name>
             <source-roots>
+                <root id="src.image.dir"/>
+                <root id="src.dados.dir"/>
                 <root id="src.dir" name="src"/>
             </source-roots>
             <test-roots/>

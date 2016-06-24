@@ -11,10 +11,12 @@ import object.Gerente;
 public class Main {
 
     public static void main(String[] args) {
+                
                 Programa.carregaPrograma();
                 Cadastro.insereGerente("Liviolixoso","livio" , "1234");
                 Cadastro.insereUsuario("Pollianna", "pmachado", "123");
                 Cadastro.insereUsuario("Lixoso", "lix", "9876");
+                Cadastro.insereUsuario("Kaio", "kteixeira", "123");
                 
 		Login login = new Login();
 		login.setVisible(true);
