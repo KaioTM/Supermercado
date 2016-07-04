@@ -28,13 +28,9 @@ public class JanelaPadrao extends javax.swing.JFrame {
     private void initComponents() {
 
         btnMenu = new javax.swing.JButton();
-        pnlConteudo = new javax.swing.JPanel();
-        btnVenda = new javax.swing.JButton();
-        btnEstoque = new javax.swing.JButton();
-        btnRelatorio = new javax.swing.JButton();
-        btnRelatorio1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setSize(new java.awt.Dimension(550, 350));
 
         btnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/casa1.png"))); // NOI18N
         btnMenu.setText("Menu");
@@ -45,88 +41,20 @@ public class JanelaPadrao extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout pnlConteudoLayout = new javax.swing.GroupLayout(pnlConteudo);
-        pnlConteudo.setLayout(pnlConteudoLayout);
-        pnlConteudoLayout.setHorizontalGroup(
-            pnlConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 376, Short.MAX_VALUE)
-        );
-        pnlConteudoLayout.setVerticalGroup(
-            pnlConteudoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        btnVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/venda.png"))); // NOI18N
-        btnVenda.setText("Venda");
-        btnVenda.setMargin(new java.awt.Insets(0, 20, 0, 20));
-        btnVenda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVendaActionPerformed(evt);
-            }
-        });
-
-        btnEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/deli1.png"))); // NOI18N
-        btnEstoque.setText("Estoque");
-        btnEstoque.setMargin(new java.awt.Insets(0, 20, 0, 20));
-        btnEstoque.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEstoqueActionPerformed(evt);
-            }
-        });
-
-        btnRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/relatorio.png"))); // NOI18N
-        btnRelatorio.setText("Relatório");
-        btnRelatorio.setMargin(new java.awt.Insets(0, 20, 0, 20));
-        btnRelatorio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRelatorioActionPerformed(evt);
-            }
-        });
-
-        btnRelatorio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/settings.png"))); // NOI18N
-        btnRelatorio1.setText("Admin");
-        btnRelatorio1.setMargin(new java.awt.Insets(0, 20, 0, 20));
-        btnRelatorio1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRelatorio1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnRelatorio1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlConteudo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(359, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlConteudo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                        .addComponent(btnEstoque)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnVenda)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRelatorio)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRelatorio1)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(258, Short.MAX_VALUE)
+                .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -139,25 +67,6 @@ public class JanelaPadrao extends javax.swing.JFrame {
         menuInicial.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnMenuActionPerformed
-
-    private void btnEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstoqueActionPerformed
-        // TODO add your handling code here:
-        viewEstoque estoque = new viewEstoque();
-        estoque.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnEstoqueActionPerformed
-
-    private void btnVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVendaActionPerformed
-
-    private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRelatorioActionPerformed
-
-    private void btnRelatorio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorio1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRelatorio1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,11 +104,6 @@ public class JanelaPadrao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEstoque;
     private javax.swing.JButton btnMenu;
-    private javax.swing.JButton btnRelatorio;
-    private javax.swing.JButton btnRelatorio1;
-    private javax.swing.JButton btnVenda;
-    private javax.swing.JPanel pnlConteudo;
     // End of variables declaration//GEN-END:variables
 }

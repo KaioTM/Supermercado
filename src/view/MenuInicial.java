@@ -1,5 +1,9 @@
 package view;
 
+import data.Cadastro;
+import data.Supermercado;
+import object.Usuario;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -17,7 +21,26 @@ public class MenuInicial extends javax.swing.JFrame {
      */
     public MenuInicial() {
         initComponents();
+        if (Cadastro.getUsuarioLogado().acessaEstoque()) {
+
+            btnEstoque.setEnabled(true);
+            btnRelatorio.setEnabled(true);
+            btnVenda.setEnabled(true);
+            btnAdmin.setEnabled(true);
+            
+          
+        } else {
+            
+            btnEstoque.setEnabled(false);
+            btnRelatorio.setEnabled(true);
+            btnVenda.setEnabled(true);
+            btnAdmin.setEnabled(false);
+
+        }
+        
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,72 +53,97 @@ public class MenuInicial extends javax.swing.JFrame {
 
         btnEstoque = new javax.swing.JButton();
         btnVenda = new javax.swing.JButton();
-        btnPreco = new javax.swing.JButton();
-        btnRelatorios = new javax.swing.JButton();
+        btnRelatorio = new javax.swing.JButton();
+        btnAdmin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
+        btnEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/deli1.png"))); // NOI18N
         btnEstoque.setText("Estoque");
+        btnEstoque.setMargin(new java.awt.Insets(0, 20, 0, 20));
         btnEstoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEstoqueActionPerformed(evt);
             }
         });
 
-        btnVenda.setText("Realizar Venda");
+        btnVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/venda.png"))); // NOI18N
+        btnVenda.setText("Venda");
+        btnVenda.setMargin(new java.awt.Insets(0, 20, 0, 20));
         btnVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVendaActionPerformed(evt);
             }
         });
 
-        btnPreco.setText("Consulta Preço");
+        btnRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/relatorio.png"))); // NOI18N
+        btnRelatorio.setText("Relatório");
+        btnRelatorio.setMargin(new java.awt.Insets(0, 20, 0, 20));
+        btnRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRelatorioActionPerformed(evt);
+            }
+        });
 
-        btnRelatorios.setText("Relatórios");
+        btnAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/settings.png"))); // NOI18N
+        btnAdmin.setText("Admin");
+        btnAdmin.setMargin(new java.awt.Insets(0, 20, 0, 20));
+        btnAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdminActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGap(132, 132, 132)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnVenda)
-                    .addComponent(btnPreco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(255, 255, 255))
+                    .addComponent(btnVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                    .addComponent(btnAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addComponent(btnEstoque)
-                .addGap(18, 18, 18)
-                .addComponent(btnVenda)
-                .addGap(18, 18, 18)
-                .addComponent(btnPreco)
-                .addGap(18, 18, 18)
-                .addComponent(btnRelatorios)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addGap(76, 76, 76)
+                .addComponent(btnEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(btnVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstoqueActionPerformed
+        // TODO add your handling code here:
+        viewEstoque estoque = new viewEstoque();
+        estoque.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEstoqueActionPerformed
+
     private void btnVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVendaActionPerformed
 
-    private void btnEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstoqueActionPerformed
-        viewEstoque estoque = new view.viewEstoque();
-        estoque.setVisible(true);
-        this.dispose();
-            
+    private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnEstoqueActionPerformed
+    }//GEN-LAST:event_btnRelatorioActionPerformed
+
+    private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,9 +182,9 @@ public class MenuInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdmin;
     private javax.swing.JButton btnEstoque;
-    private javax.swing.JButton btnPreco;
-    private javax.swing.JButton btnRelatorios;
+    private javax.swing.JButton btnRelatorio;
     private javax.swing.JButton btnVenda;
     // End of variables declaration//GEN-END:variables
 }

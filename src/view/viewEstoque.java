@@ -32,7 +32,9 @@ public class viewEstoque extends JanelaPadrao {
         btnRemoverProduto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(550, 350));
         setResizable(false);
+        setSize(new java.awt.Dimension(550, 350));
 
         btnCadastrarProduto.setText("Cadastrar Produto");
         btnCadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -59,24 +61,25 @@ public class viewEstoque extends JanelaPadrao {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(132, 132, 132)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnCadastrarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRemoverProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnConsultarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(147, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(277, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnCadastrarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btnRemoverProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnConsultarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)))
+                .addGap(104, 104, 104))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(btnCadastrarProduto)
-                .addGap(18, 18, 18)
-                .addComponent(btnRemoverProduto)
-                .addGap(18, 18, 18)
-                .addComponent(btnConsultarProduto)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addGap(96, 96, 96)
+                .addComponent(btnCadastrarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRemoverProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnConsultarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         btnCadastrarProduto.getAccessibleContext().setAccessibleDescription("");

@@ -119,7 +119,28 @@ public class Login extends javax.swing.JFrame{
     
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {                                          
 				if(evt.getSource() == btnEntrar){
-					if(Cadastro.validaUsername(fldLogin.getText()) && (Cadastro.validaSenha(fldLogin.getText(), fldSenha.getText()))){
+					if ((Cadastro.validaSenha(fldLogin.getText(), fldSenha.getText())) && (Cadastro.validaUsername(fldLogin.getText()))){
+                                            JOptionPane.showMessageDialog(null, "Logado com sucesso.");
+                                            this.dispose();
+                                            
+                                            
+                                            
+                                            MenuInicial.init();
+                                            
+                                        }else{
+                                            JOptionPane.showMessageDialog(null, "Usuário ou Senha inválida");
+                                        }
+				}
+			
+    }                                         
+
+    private void fldLoginActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+    }                                        
+    private void btnEntrarKeyTyped (java.awt.event.KeyEvent evt){
+        int key = evt.getKeyCode();
+        if (key == KeyEvent.VK_ENTER){
+            if(Cadastro.validaUsername(fldLogin.getText()) && (Cadastro.validaSenha(fldLogin.getText(), fldSenha.getText()))){
                                             JOptionPane.showMessageDialog(null, "Logado com sucesso.");
                                             this.dispose();
                                             
@@ -130,14 +151,8 @@ public class Login extends javax.swing.JFrame{
 					}else{
 						JOptionPane.showMessageDialog(null, "Usuário ou Senha inválida");
 					}
-				}
-			
-    }                                         
-
-    private void fldLoginActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
-    }                                        
-
+        }
+    }
     /**
      * @param args the command line arguments
      */

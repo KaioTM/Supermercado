@@ -1,18 +1,19 @@
-
-import data.Programa;
 import view.*;
 import javax.swing.JFrame;
 import java.awt.*;
 import javax.swing.*;
 import view.*;
 import data.Cadastro;
+import data.Supermercado;
 import object.Gerente;
 
 public class Main {
 
     public static void main(String[] args) {
                 
-                Programa.carregaPrograma();
+                Supermercado.getInstancia().carregaSupermercado();
+                //Supermercado.getInstancia().getEstoque().itens();
+                
                 Cadastro.insereGerente("Liviolixoso","livio" , "1234");
                 Cadastro.insereUsuario("Pollianna", "pmachado", "123");
                 Cadastro.insereUsuario("Lixoso", "lix", "9876");
@@ -20,9 +21,6 @@ public class Main {
                 
 		Login login = new Login();
 		login.setVisible(true);
-                  
-                
-	login.setVisible(true);
                   //Programa.salvaPrograma();
         
 

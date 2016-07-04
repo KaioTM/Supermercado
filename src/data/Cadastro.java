@@ -5,6 +5,7 @@
  */
 package data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -17,57 +18,41 @@ import object.Gerente;
  *
  * @author kaio.teixeira
  */
-public class Cadastro {
-    public static Map<String,Usuario> cadastro = new HashMap<String,Usuario>();
-    public static Map<String,Gerente> cadastroGerente = new HashMap<String,Gerente>();
-     
+public class Cadastro implements Serializable {
+    public Map<String,Usuario> cadastro = new HashMap<String,Usuario>();
+    //public static Map<String,Gerente> cadastroGerente = new HashMap<String,Gerente>();
+    private static Usuario usuarioLogado; 
+    
     public static void insereUsuario(String nome,String username,String senha){
         Usuario cadastroCriado = new Usuario(nome,username,senha);
-        cadastro.put(username, cadastroCriado);
+        Supermercado.getInstancia().getCadastro().cadastro.put(username, cadastroCriado);
         
     }
     
     public static void insereGerente(String nome,String username,String senha){
         Gerente cadastroG = new Gerente(nome,username,senha);
-        cadastroGerente.put(username, cadastroG);
+        Supermercado.getInstancia().getCadastro().cadastro.put(username, cadastroG);
         
     }
     
     public static boolean validaUsername(String username) {
       
-        return cadastro.containsKey(username);
+        return Supermercado.getInstancia().getCadastro().cadastro.containsKey(username);
         
 }
-    
       public static boolean validaSenha(String username, String senha) {
-        Usuario teste;
-        teste = cadastro.get(username);
-        return teste.getSenha().equals(senha);
-         
-          
-          
-      
-        
-        
+        Usuario usuario = Supermercado.getInstancia().getCadastro().cadastro.get(username);
+        if (usuario.getSenha().equals(senha)){
+            usuarioLogado = usuario;
+            return true;
+        }
+        return false;
       }
-      
-       public static boolean validaUsernameGerente(String username) {
-      
-        return cadastroGerente.containsKey(username);
-        
-}
-    
-      public static boolean validaSenhaGerente(String username, String senha) {
-        Usuario teste;
-        teste = cadastroGerente.get(username);
-        return teste.getSenha().equals(senha);
-         
-          
-          
-      
-        
-        
-      }
+
+    public static Usuario getUsuarioLogado() {
+        return usuarioLogado;
+    }
+
 }
           
 

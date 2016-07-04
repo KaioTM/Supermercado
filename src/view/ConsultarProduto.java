@@ -9,7 +9,7 @@ package view;
  *
  * @author kaio.teixeira
  */
-public class ConsultarProduto extends javax.swing.JFrame {
+public class ConsultarProduto extends JanelaPadrao {
 
     /**
      * Creates new form ConsultarProduto
@@ -46,6 +46,9 @@ public class ConsultarProduto extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(550, 350));
+        setResizable(false);
+        setSize(new java.awt.Dimension(550, 350));
 
         lblIdProduto.setText("Id do Produto:");
 
@@ -70,7 +73,7 @@ public class ConsultarProduto extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(84, Short.MAX_VALUE)
+                .addContainerGap(223, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
@@ -79,19 +82,19 @@ public class ConsultarProduto extends javax.swing.JFrame {
                         .addComponent(txtIdProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnConsultar)))
-                .addGap(70, 70, 70))
+                .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblIdProduto)
                     .addComponent(txtIdProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnConsultar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         pack();
@@ -104,7 +107,7 @@ public class ConsultarProduto extends javax.swing.JFrame {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         // TODO add your handling code here:
-        txtProdutoConsultado.setText(data.Estoque.consultaProduto(txtIdProduto.getText()));
+        txtProdutoConsultado.setText(data.Supermercado.getInstancia().getEstoque().consultaProduto(txtIdProduto.getText()));
         
         //txtProdutoConsultado.setText();
         

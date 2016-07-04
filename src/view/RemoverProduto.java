@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package view;
+import data.Estoque;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,12 +37,8 @@ public class RemoverProduto extends javax.swing.JFrame {
         btnRemover = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        txtIdProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdProdutoActionPerformed(evt);
-            }
-        });
+        setResizable(false);
+        setSize(new java.awt.Dimension(520, 300));
 
         lblIdProduto.setText("Id do Produto:");
 
@@ -57,27 +55,32 @@ public class RemoverProduto extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtProdutoConsultado);
 
         btnRemover.setText("Remover");
+        btnRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
+                .addContainerGap(197, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblIdProduto)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtIdProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnConsultar))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnConsultar)))
                         .addGap(61, 61, 61))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnRemover)
-                        .addGap(160, 160, 160))))
+                        .addGap(150, 150, 150))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,35 +90,34 @@ public class RemoverProduto extends javax.swing.JFrame {
                     .addComponent(lblIdProduto)
                     .addComponent(txtIdProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnConsultar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(40, 40, 40)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRemover)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtIdProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdProdutoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdProdutoActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         // TODO add your handling code here:
         //txtProdutoConsultado.setText();
-        txtProdutoConsultado.setText(data.Estoque.consultaProduto(txtIdProduto.getText()));
+        txtProdutoConsultado.setText(data.Supermercado.getInstancia().getEstoque().consultaProduto(txtIdProduto.getText()));
     }//GEN-LAST:event_btnConsultarActionPerformed
 
+    private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showInputDialog("Digite a quantidade:", 1);
+        //Estoque.retiraProduto(nomeProduto, HIDE_ON_CLOSE);
+    }//GEN-LAST:event_btnRemoverActionPerformed
+    
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

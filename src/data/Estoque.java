@@ -1,30 +1,25 @@
 package data;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.URL;
+import java.io.Serializable;
 import object.Item;
 import object.Produto;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author KaioT
  */
-public class Estoque {
-    //String localEstoque = "/dados/dados/estoque.ser";
-    public static ArrayList<Item> estoque = new ArrayList();
-    
-    public static void insereProduto(String id,String nome,Float preço,int quantidadeInserida){
+public class Estoque implements Serializable {
+    private List<Item> itens = new ArrayList();
+
+    public void insereProduto(String id,String nome,Float preço,int quantidadeInserida){
         Produto produtoCriado = new Produto(id,nome,preço);
         Item itemCriado = new Item(produtoCriado,quantidadeInserida);
         boolean itemAtualizado = false;
-        if (estoque.isEmpty()){
-            if (estoque.add(itemCriado) == true){
+        if (itens.isEmpty()){
+            if (itens.add(itemCriado) == true){
                JOptionPane.showMessageDialog(null,"Produto cadastrado com Sucesso");
                itemAtualizado = true;
                 
@@ -33,15 +28,15 @@ public class Estoque {
             }        
         }else{
             
-            for (int i=0;i<estoque.size();i++){           
-                if (estoque.get(i).getProduto().getIdProduto().equalsIgnoreCase(id)){
-                    itemAtualizado = estoque.get(i).setQuantidade(estoque.get(i).getQuantidade()+quantidadeInserida);
+            for (int i=0;i<itens.size();i++){           
+                if (itens.get(i).getProduto().getIdProduto().equalsIgnoreCase(id)){
+                    itemAtualizado = itens.get(i).setQuantidade(itens.get(i).getQuantidade()+quantidadeInserida);
                     JOptionPane.showMessageDialog(null,"Produto atualizado com sucesso");
                     break;          
                 }       
             }
             if (itemAtualizado == false){
-                estoque.add(itemCriado); 
+                itens.add(itemCriado); 
                 JOptionPane.showMessageDialog(null,"Produto cadastrado com Sucesso");
             }
                         
@@ -53,14 +48,14 @@ public class Estoque {
         
     
     // Falta tratar quando o produto não é encontrado
-    public static String consultaProduto (String idProduto){
+    public String consultaProduto (String idProduto){
         int i;      
-            for (i=0;i<Estoque.estoque.size();i++){
-                if (estoque.get(i).getProduto().getIdProduto().equalsIgnoreCase(idProduto)){            
-                    return ("ID: "+estoque.get(i).getProduto().getIdProduto()+
-                            "\nNome do produto: "+estoque.get(i).getProduto().getNomeProduto()+
-                            "\nPreço: R$"+estoque.get(i).getProduto().getPreço()+
-                            "\nQuantidade: "+estoque.get(i).getQuantidade());
+            for (i=0;i<itens.size();i++){
+                if (itens.get(i).getProduto().getIdProduto().equalsIgnoreCase(idProduto)){            
+                    return ("ID: "+itens.get(i).getProduto().getIdProduto()+
+                            "\nNome do produto: "+itens.get(i).getProduto().getNomeProduto()+
+                            "\nPreço: R$"+itens.get(i).getProduto().getPreço()+
+                            "\nQuantidade: "+itens.get(i).getQuantidade());
 //                    System.out.print("ID: "+estoque.get(i).getProduto().getIdProduto()+
 //                            "\nNome do produto: "+estoque.get(i).getProduto().getNomeProduto()+
 //                            "\nPreço: R$"+estoque.get(i).getProduto().getPreço()+
@@ -79,18 +74,18 @@ public class Estoque {
             return ("Produto não encontrado.");
     }
     
-    public static void retiraProduto(String nomeProduto,int quantidadeSolicitada){
+    public void retiraProduto(String nomeProduto,int quantidadeSolicitada){
         int i; 
         
-        if (estoque.isEmpty()){
+        if (itens.isEmpty()){
             JOptionPane.showMessageDialog(null,"O estoque está vazio");
         }else{
-            for (i=0;i<Estoque.estoque.size();i++){
-                if (estoque.get(i).getProduto().getNomeProduto().equalsIgnoreCase(nomeProduto)){
-                    if(estoque.get(i).getQuantidade() == quantidadeSolicitada){
-                       estoque.remove(estoque.get(i)); 
+            for (i=0;i<itens.size();i++){
+                if (itens.get(i).getProduto().getNomeProduto().equalsIgnoreCase(nomeProduto)){
+                    if(itens.get(i).getQuantidade() == quantidadeSolicitada){
+                       itens.remove(itens.get(i)); 
                     }else{
-                        estoque.get(i).setQuantidade(estoque.get(i).getQuantidade() - quantidadeSolicitada);
+                        itens.get(i).setQuantidade(itens.get(i).getQuantidade() - quantidadeSolicitada);
                     }
                         
                     JOptionPane.showMessageDialog(null,"Retirado com Sucesso");
@@ -102,44 +97,25 @@ public class Estoque {
                     
     }
     
-     public static void carregaEstoque(){
-        
-        try
-      {
-         FileInputStream fileIn = new FileInputStream("C:\\Users\\KaioT\\Documents\\GitHub\\Supermercado\\dados\\dados\\estoque.ser");
-         ObjectInputStream in = new ObjectInputStream(fileIn);
-         Estoque.estoque = (ArrayList) in.readObject();
-         in.close();
-         fileIn.close();
-         System.out.println("Estoque Carregado");
-      }catch(IOException i)
-      {
-         i.printStackTrace();
-         return;
-      }catch(ClassNotFoundException c)
-      {
-         System.out.println("ArrayList not found");
-         c.printStackTrace();
-         return;
-      }
-
-    }
-     
-     public static void salvaEstoque (){
-            
-        try{
-                 FileOutputStream fileOut = new FileOutputStream("C:\\Users\\KaioT\\Documents\\GitHub\\Supermercado\\dados\\dados\\estoque.ser");
-                 ObjectOutputStream out = new ObjectOutputStream(fileOut);  
-                 out.writeObject(Estoque.estoque);
-                 out.close();
-                 fileOut.close();
-                 System.out.printf("Serialized data is saved in C:\\Users\\KaioT\\Documents\\GitHub\\Supermercado\\dados\\dados\\estoque.ser");
-               }catch(IOException i){
-                  i.printStackTrace();
-                }
-    }
+    
   
 //    public static String consultaEstoque (){
 //        Estoque.estoque.
 //    }
+
+    public List<Item> getEstoque() {
+        return itens;
+    }
+
+    public void setEstoque(List<Item> estoque) {
+        this.itens = estoque;
+    }
+
+    public List<Item> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<Item> itens) {
+        this.itens = itens;
+    }
 }

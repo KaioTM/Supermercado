@@ -25,29 +25,29 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="2" attributes="0">
-                  <Component id="btnEstoque" alignment="2" max="32767" attributes="0"/>
-                  <Component id="btnVenda" alignment="2" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnPreco" alignment="2" max="32767" attributes="0"/>
-                  <Component id="btnRelatorios" alignment="2" min="-2" pref="105" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnEstoque" max="32767" attributes="0"/>
+                  <Component id="btnVenda" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnRelatorio" alignment="0" pref="165" max="32767" attributes="0"/>
+                  <Component id="btnAdmin" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="255" max="-2" attributes="0"/>
+              <EmptySpace pref="123" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-              <Component id="btnEstoque" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-              <Component id="btnVenda" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-              <Component id="btnPreco" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-              <Component id="btnRelatorios" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="83" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+              <Component id="btnEstoque" min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+              <Component id="btnVenda" min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="btnRelatorio" min="-2" pref="32" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnAdmin" min="-2" pref="32" max="-2" attributes="0"/>
+              <EmptySpace pref="75" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -55,7 +55,13 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnEstoque">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/deli1.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Estoque"/>
+        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+          <Insets value="[0, 20, 0, 20]"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEstoqueActionPerformed"/>
@@ -63,21 +69,45 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnVenda">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Realizar Venda"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/venda.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Venda"/>
+        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+          <Insets value="[0, 20, 0, 20]"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVendaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnPreco">
+    <Component class="javax.swing.JButton" name="btnRelatorio">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Consulta Pre&#xe7;o"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/relatorio.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Relat&#xf3;rio"/>
+        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+          <Insets value="[0, 20, 0, 20]"/>
+        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRelatorioActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnRelatorios">
+    <Component class="javax.swing.JButton" name="btnAdmin">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Relat&#xf3;rios"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/settings.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Admin"/>
+        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+          <Insets value="[0, 20, 0, 20]"/>
+        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAdminActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

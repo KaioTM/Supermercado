@@ -6,6 +6,7 @@
 package view;
 
 import data.Estoque;
+import data.Supermercado;
 import view.*;
 
 /**
@@ -41,7 +42,9 @@ public class CadastrarProduto extends JanelaPadrao {
         btnCadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(550, 350));
         setResizable(false);
+        setSize(new java.awt.Dimension(550, 350));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -70,8 +73,8 @@ public class CadastrarProduto extends JanelaPadrao {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(202, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(232, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNomeProduto)
                     .addComponent(lblPreco)
@@ -85,12 +88,12 @@ public class CadastrarProduto extends JanelaPadrao {
                         .addComponent(txtNomeProduto)
                         .addComponent(txtQuantidade)
                         .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(76, 76, 76))
+                .addGap(100, 100, 100))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addContainerGap(61, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblIdProduto)
                     .addComponent(txtIdProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -108,7 +111,7 @@ public class CadastrarProduto extends JanelaPadrao {
                     .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addComponent(btnCadastrar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(48, 48, 48))
         );
 
         pack();
@@ -117,9 +120,10 @@ public class CadastrarProduto extends JanelaPadrao {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
-        data.Estoque.insereProduto(txtIdProduto.getText(), txtNomeProduto.getText(),Float.parseFloat(txtPreco.getText()),Integer.parseInt(txtQuantidade.getText()) );
+        data.Supermercado.getInstancia().getEstoque().insereProduto(txtIdProduto.getText(), txtNomeProduto.getText(),Float.parseFloat(txtPreco.getText()),Integer.parseInt(txtQuantidade.getText()) );
+    
         this.dispose();
-        //Estoque.salvaEstoque();
+        MenuInicial.init();
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -129,7 +133,7 @@ public class CadastrarProduto extends JanelaPadrao {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
-        Estoque.salvaEstoque();
+        Supermercado.getInstancia().salvaSupermercado();
     }//GEN-LAST:event_formWindowClosed
     /**
      * @param args the command line arguments
