@@ -6,6 +6,7 @@ import model.Produto;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -96,6 +97,17 @@ public class Estoque implements Serializable {
         }
                     
     }
+    public void listaTodosItens(JTextArea displayArea){
+        int i; 
+        
+            for (i=0;i<itens.size();i++){
+                displayArea.append("ID: "+itens.get(i).getProduto().getIdProduto()+
+                            "\nNome do produto: "+itens.get(i).getProduto().getNomeProduto()+
+                            "\nPreço: R$"+itens.get(i).getProduto().getPreço()+
+                            "\nQuantidade: "+itens.get(i).getQuantidade());
+            }
+        }
+                    
     
     
   

@@ -5,17 +5,20 @@
  */
 package view;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author KaioT
  */
 public class JanelaPadrao extends javax.swing.JFrame {
-
+static final ImageIcon iconeJanela = new ImageIcon("C:\\Users\\KaioT\\Documents\\GitHub\\Supermercado\\image\\shop-icon.png");
     /**
      * Creates new form JanelaPadrao
      */
     public JanelaPadrao() {
         initComponents();
+        this.setIconImage(iconeJanela.getImage());
     }
 
     /**

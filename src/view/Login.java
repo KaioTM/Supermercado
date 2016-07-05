@@ -1,12 +1,11 @@
 package view;
 
 
+import controller.Supermercado;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
-import controller.Cadastro;
-import controller.Supermercado;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -24,6 +23,7 @@ public class Login extends javax.swing.JFrame{
      */
     public Login() {
         initComponents();
+        this.setIconImage(JanelaPadrao.iconeJanela.getImage());
     }
 
     /**
@@ -120,17 +120,17 @@ public class Login extends javax.swing.JFrame{
     
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {                                          
 				if(evt.getSource() == btnEntrar){
-					if ((Cadastro.validaSenha(fldLogin.getText(), fldSenha.getText())) && (Cadastro.validaUsername(fldLogin.getText()))){
+					if(Supermercado.getInstancia().getCadastro().validaUsername(fldLogin.getText()) && (Supermercado.getInstancia().getCadastro().validaSenha(fldLogin.getText(), fldSenha.getText()))){
                                             JOptionPane.showMessageDialog(null, "Logado com sucesso.");
                                             this.dispose();
                                             
-                                            
-                                            
+                                       
+
                                             MenuInicial.init();
-                                            
-                                        }else{
-                                            JOptionPane.showMessageDialog(null, "Usuário ou Senha inválida");
-                                        }
+                                                
+					}else{
+						JOptionPane.showMessageDialog(null, "Usuário ou Senha inválida");
+					}
 				}
 			
     }                                         
@@ -138,20 +138,7 @@ public class Login extends javax.swing.JFrame{
     private void fldLoginActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
     }                                        
-    private void btnEntrarKeyTyped (java.awt.event.KeyEvent evt){
-        int key = evt.getKeyCode();
-        if (key == KeyEvent.VK_ENTER){
-            if(Supermercado.getInstancia().getCadastro().validaUsername(fldLogin.getText()) && (Supermercado.getInstancia().getCadastro().validaSenha(fldLogin.getText(), fldSenha.getText()))){
-                                            JOptionPane.showMessageDialog(null, "Logado com sucesso.");
-                                            this.dispose();
-                                      
-                                            MenuInicial.init();
-                                                
-					}else{
-						JOptionPane.showMessageDialog(null, "Usuário ou Senha inválida");
-					}
-        }
-    }
+
     /**
      * @param args the command line arguments
      */

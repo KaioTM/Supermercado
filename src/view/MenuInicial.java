@@ -21,6 +21,7 @@ public class MenuInicial extends javax.swing.JFrame {
      */
     public MenuInicial() {
         initComponents();
+        this.setIconImage(JanelaPadrao.iconeJanela.getImage());
         if (Supermercado.getInstancia().getCadastro().getUsuarioLogado().acessaEstoque()) {
 
             btnEstoque.setEnabled(true);
@@ -57,6 +58,7 @@ public class MenuInicial extends javax.swing.JFrame {
         btnAdmin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 204, 255));
         setResizable(false);
 
         btnEstoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/deli1.png"))); // NOI18N
