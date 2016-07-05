@@ -5,8 +5,8 @@
  */
 package view;
 
-import data.Estoque;
-import data.Supermercado;
+import controller.Estoque;
+import controller.Supermercado;
 import view.*;
 
 /**
@@ -120,7 +120,7 @@ public class CadastrarProduto extends JanelaPadrao {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         // TODO add your handling code here:
-        data.Supermercado.getInstancia().getEstoque().insereProduto(txtIdProduto.getText(), txtNomeProduto.getText(),Float.parseFloat(txtPreco.getText()),Integer.parseInt(txtQuantidade.getText()) );
+        controller.Supermercado.getInstancia().getEstoque().insereProduto(txtIdProduto.getText(), txtNomeProduto.getText(),Float.parseFloat(txtPreco.getText()),Integer.parseInt(txtQuantidade.getText()) );
     
         this.dispose();
         MenuInicial.init();

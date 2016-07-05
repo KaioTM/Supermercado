@@ -107,7 +107,7 @@ public class ConsultarProduto extends JanelaPadrao {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         // TODO add your handling code here:
-        txtProdutoConsultado.setText(data.Supermercado.getInstancia().getEstoque().consultaProduto(txtIdProduto.getText()));
+        txtProdutoConsultado.setText(controller.Supermercado.getInstancia().getEstoque().consultaProduto(txtIdProduto.getText()));
         
         //txtProdutoConsultado.setText();
         

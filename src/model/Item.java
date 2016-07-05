@@ -1,8 +1,8 @@
-package object;
+package model;
 
 
 import java.io.Serializable;
-import object.Produto;
+import model.Produto;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

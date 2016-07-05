@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package view;
-import data.Estoque;
+import controller.Estoque;
 import javax.swing.JOptionPane;
 
 /**
@@ -104,7 +104,7 @@ public class RemoverProduto extends javax.swing.JFrame {
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         // TODO add your handling code here:
         //txtProdutoConsultado.setText();
-        txtProdutoConsultado.setText(data.Supermercado.getInstancia().getEstoque().consultaProduto(txtIdProduto.getText()));
+        txtProdutoConsultado.setText(controller.Supermercado.getInstancia().getEstoque().consultaProduto(txtIdProduto.getText()));
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed

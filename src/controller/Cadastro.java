@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package data;
+package controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import object.Usuario;
-import object.Gerente;
+import model.Usuario;
+import model.Gerente;
 
 
 /**

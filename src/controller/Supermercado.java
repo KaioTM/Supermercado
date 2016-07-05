@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package data;
+package controller;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -17,10 +17,12 @@ import java.util.ArrayList;
  *
  * @author kaio.teixeira
  */
+
+
 public class Supermercado implements Serializable {
     private Estoque estoque;
     private Cadastro cadastro;
-
+    private static final String NOME_ARQUIVO = "supermercado.ser";
 //Singleton
     private static Supermercado instancia = null;
     public static synchronized Supermercado getInstancia(){
@@ -47,7 +49,7 @@ public class Supermercado implements Serializable {
         
         try
       {
-         FileInputStream fileIn = new FileInputStream("C:\\Users\\kaio.teixeira\\Documents\\GitHub\\Supermercado\\dados\\dados\\supermercado.ser");
+         FileInputStream fileIn = new FileInputStream(NOME_ARQUIVO);
          ObjectInputStream in = new ObjectInputStream(fileIn);
          estoque = (Estoque) in.readObject();
          cadastro = (Cadastro) in.readObject();
@@ -70,13 +72,13 @@ public class Supermercado implements Serializable {
      public void salvaSupermercado (){
             
         try{
-                 FileOutputStream fileOut = new FileOutputStream("C:\\Users\\kaio.teixeira\\Documents\\GitHub\\Supermercado\\dados\\dados\\supermercado.ser");
+                 FileOutputStream fileOut = new FileOutputStream(NOME_ARQUIVO);
                  ObjectOutputStream out = new ObjectOutputStream(fileOut);  
                  out.writeObject(estoque);
                  out.writeObject(cadastro);
                  out.close();
                  fileOut.close();
-                 System.out.printf("Serialized data is saved in C:\\Users\\kaio.teixeira\\Documents\\GitHub\\Supermercado\\dados\\dados\\supermercado.ser");
+                 System.out.printf("Serialized data saved");
                }catch(IOException i){
                   i.printStackTrace();
                 }

@@ -1,8 +1,8 @@
 package view;
 
-import data.Cadastro;
-import data.Supermercado;
-import object.Usuario;
+import controller.Cadastro;
+import controller.Supermercado;
+import model.Usuario;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -128,7 +128,7 @@ public class MenuInicial extends javax.swing.JFrame {
 
     private void btnEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstoqueActionPerformed
         // TODO add your handling code here:
-        viewEstoque estoque = new viewEstoque();
+        ViewEstoque estoque = new ViewEstoque();
         estoque.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnEstoqueActionPerformed

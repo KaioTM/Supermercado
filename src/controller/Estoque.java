@@ -1,8 +1,8 @@
-package data;
+package controller;
 
 import java.io.Serializable;
-import object.Item;
-import object.Produto;
+import model.Item;
+import model.Produto;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;

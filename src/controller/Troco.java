@@ -1,3 +1,5 @@
+package controller;
+
 import java.util.Scanner;
 public class Troco {
     public static void descobrir_troco(String[] args) {
