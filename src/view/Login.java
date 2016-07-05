@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import data.Cadastro;
+import data.Supermercado;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -140,12 +141,10 @@ public class Login extends javax.swing.JFrame{
     private void btnEntrarKeyTyped (java.awt.event.KeyEvent evt){
         int key = evt.getKeyCode();
         if (key == KeyEvent.VK_ENTER){
-            if(Cadastro.validaUsername(fldLogin.getText()) && (Cadastro.validaSenha(fldLogin.getText(), fldSenha.getText()))){
+            if(Supermercado.getInstancia().getCadastro().validaUsername(fldLogin.getText()) && (Supermercado.getInstancia().getCadastro().validaSenha(fldLogin.getText(), fldSenha.getText()))){
                                             JOptionPane.showMessageDialog(null, "Logado com sucesso.");
                                             this.dispose();
-                                            
-                                       
-
+                                      
                                             MenuInicial.init();
                                                 
 					}else{

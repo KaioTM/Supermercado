@@ -21,7 +21,7 @@ public class MenuInicial extends javax.swing.JFrame {
      */
     public MenuInicial() {
         initComponents();
-        if (Cadastro.getUsuarioLogado().acessaEstoque()) {
+        if (Supermercado.getInstancia().getCadastro().getUsuarioLogado().acessaEstoque()) {
 
             btnEstoque.setEnabled(true);
             btnRelatorio.setEnabled(true);

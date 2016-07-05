@@ -47,7 +47,7 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public static boolean acessaEstoque (){
+    public boolean acessaEstoque (){
         
         return false;
           

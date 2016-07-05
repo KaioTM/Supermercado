@@ -14,10 +14,10 @@ public class Main {
                 Supermercado.getInstancia().carregaSupermercado();
                 //Supermercado.getInstancia().getEstoque().itens();
                 
-                Cadastro.insereGerente("Liviolixoso","livio" , "1234");
-                Cadastro.insereUsuario("Pollianna", "pmachado", "123");
-                Cadastro.insereUsuario("Lixoso", "lix", "9876");
-                Cadastro.insereUsuario("Kaio", "kteixeira", "123");
+                Supermercado.getInstancia().getCadastro().insereGerente("Liviolixoso","livio" , "1234");
+                Supermercado.getInstancia().getCadastro().insereUsuario("Pollianna", "pmachado", "123");
+                Supermercado.getInstancia().getCadastro().insereUsuario("Lixoso", "lix", "9876");
+                Supermercado.getInstancia().getCadastro().insereUsuario("Kaio", "kteixeira", "123");
                 
 		Login login = new Login();
 		login.setVisible(true);

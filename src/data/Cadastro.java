@@ -21,15 +21,15 @@ import object.Gerente;
 public class Cadastro implements Serializable {
     public Map<String,Usuario> cadastro = new HashMap<String,Usuario>();
     //public static Map<String,Gerente> cadastroGerente = new HashMap<String,Gerente>();
-    private static Usuario usuarioLogado; 
+    private static Usuario usuarioLogado;
     
-    public static void insereUsuario(String nome,String username,String senha){
+    public void insereUsuario(String nome,String username,String senha){
         Usuario cadastroCriado = new Usuario(nome,username,senha);
         Supermercado.getInstancia().getCadastro().cadastro.put(username, cadastroCriado);
         
     }
     
-    public static void insereGerente(String nome,String username,String senha){
+    public void insereGerente(String nome,String username,String senha){
         Gerente cadastroG = new Gerente(nome,username,senha);
         Supermercado.getInstancia().getCadastro().cadastro.put(username, cadastroG);
         
@@ -49,7 +49,7 @@ public class Cadastro implements Serializable {
         return false;
       }
 
-    public static Usuario getUsuarioLogado() {
+    public Usuario getUsuarioLogado() {
         return usuarioLogado;
     }
 
