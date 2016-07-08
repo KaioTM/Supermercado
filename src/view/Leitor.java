@@ -88,6 +88,7 @@ public class Leitor extends javax.swing.JFrame implements ActionListener{
 
         displayArea.setEditable(false);
         displayArea.setColumns(20);
+        displayArea.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
         displayArea.setRows(5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package view;
+import controller.*;
 
 /**
  *
@@ -31,8 +32,9 @@ public class ConsultarProduto extends JanelaPadrao {
         lblIdProduto = new javax.swing.JLabel();
         txtIdProduto = new javax.swing.JTextField();
         btnConsultar = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtProdutoConsultado = new javax.swing.JTextPane();
+        btnTodos = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtProdutoConsultado = new javax.swing.JTextArea();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -65,36 +67,49 @@ public class ConsultarProduto extends JanelaPadrao {
             }
         });
 
+        btnTodos.setText("Listar todos os Produtos");
+        btnTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTodosActionPerformed(evt);
+            }
+        });
+
         txtProdutoConsultado.setEditable(false);
-        jScrollPane2.setViewportView(txtProdutoConsultado);
+        txtProdutoConsultado.setColumns(20);
+        txtProdutoConsultado.setRows(5);
+        jScrollPane1.setViewportView(txtProdutoConsultado);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(223, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(223, 223, 223)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnTodos))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblIdProduto)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtIdProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnConsultar)))
-                .addGap(35, 35, 35))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblIdProduto)
                     .addComponent(txtIdProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnConsultar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addComponent(btnTodos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -112,6 +127,11 @@ public class ConsultarProduto extends JanelaPadrao {
         //txtProdutoConsultado.setText();
         
     }//GEN-LAST:event_btnConsultarActionPerformed
+
+    private void btnTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTodosActionPerformed
+        // TODO add your handling code here:
+        Supermercado.getInstancia().getEstoque().listaTodosItens(txtProdutoConsultado);
+    }//GEN-LAST:event_btnTodosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,11 +170,12 @@ public class ConsultarProduto extends JanelaPadrao {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultar;
+    private javax.swing.JButton btnTodos;
     private javax.swing.JFrame jFrame1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblIdProduto;
     private javax.swing.JTextField txtIdProduto;
-    private javax.swing.JTextPane txtProdutoConsultado;
+    private javax.swing.JTextArea txtProdutoConsultado;
     // End of variables declaration//GEN-END:variables
 
 }
