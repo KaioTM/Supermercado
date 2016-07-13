@@ -14,6 +14,7 @@ import model.RealizarPagamento;
 public class PagamentoCartao implements RealizarPagamento{
     private float pagamentoPendente;
     
+    @Override
     public boolean Pagamento(float valorPendente, float valorRecebido) {
         boolean pagamentoEfetuado = false;
         if (valorPendente > valorRecebido){
@@ -22,13 +23,16 @@ public class PagamentoCartao implements RealizarPagamento{
             if (ValidaCartao()){
                 pagamentoEfetuado = true;
                 this.setPagamentoPendente(valorPendente-valorRecebido);
+            }else{
+               this.setPagamentoPendente(valorPendente-valorRecebido); 
             }  
         }
         return pagamentoEfetuado;
         
     }
+    //Implementar Variável aleatória para criar a impressão que o cartão não foi aprovado
     private boolean ValidaCartao (){
-        boolean cartaoValido = false;
+        boolean cartaoValido = true;
         
         
         return cartaoValido;

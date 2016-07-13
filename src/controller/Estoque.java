@@ -117,7 +117,6 @@ public class Estoque implements Serializable {
                     + "\nPreço (Unidade): R$" + formatarFloat(itens.get(key).getProduto().getPreço())
                     + "\nQt.Disponível: " + itens.get(key).getQuantidade()
                     + "\n_______________\n\n");
-            //System.out.println( key );
         }
     }
 

@@ -119,10 +119,9 @@
     <Component class="javax.swing.JComboBox" name="cmbTipoPagamento">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
+          <StringArray count="2">
             <StringItem index="0" value="Dinheiro"/>
             <StringItem index="1" value="Cart&#xe3;o de Cr&#xe9;dito"/>
-            <StringItem index="2" value="Cart&#xe3;o de D&#xe9;bito"/>
           </StringArray>
         </Property>
       </Properties>

@@ -11,7 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.text.Document;
 
 /**
  *
@@ -49,13 +48,6 @@ public class Leitor extends javax.swing.JFrame implements ActionListener{
 
         public void updateLog(DocumentEvent e, String action) {
             displayArea.setText(Supermercado.getInstancia().getEstoque().consultaProdutonNoLeitor(txtIdProduto.getText()));
-//            displayArea.append(
-//                changeLength + " character"
-//              + ((changeLength == 1) ? " " : "s ")
-//              + action + " " + doc.getProperty("name") + "."
-//              + newline
-//              + "  Text length = " + doc.getLength() + newline);
-//            displayArea.setCaretPosition(displayArea.getDocument().getLength());
         }
     }
 

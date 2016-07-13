@@ -27,7 +27,7 @@ public class MenuInicial extends javax.swing.JFrame {
             btnEstoque.setEnabled(true);
             btnRelatorio.setEnabled(true);
             btnVenda.setEnabled(true);
-            btnAdmin.setEnabled(true);
+            
             
           
         } else {
@@ -35,7 +35,7 @@ public class MenuInicial extends javax.swing.JFrame {
             btnEstoque.setEnabled(false);
             btnRelatorio.setEnabled(true);
             btnVenda.setEnabled(true);
-            btnAdmin.setEnabled(false);
+            
 
         }
         
@@ -55,7 +55,6 @@ public class MenuInicial extends javax.swing.JFrame {
         btnEstoque = new javax.swing.JButton();
         btnVenda = new javax.swing.JButton();
         btnRelatorio = new javax.swing.JButton();
-        btnAdmin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 204, 255));
@@ -88,40 +87,28 @@ public class MenuInicial extends javax.swing.JFrame {
             }
         });
 
-        btnAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/settings.png"))); // NOI18N
-        btnAdmin.setText("Admin");
-        btnAdmin.setMargin(new java.awt.Insets(0, 20, 0, 20));
-        btnAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdminActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(132, 132, 132)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(131, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                    .addComponent(btnAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(123, Short.MAX_VALUE))
+                    .addComponent(btnRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(124, 124, 124))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(97, Short.MAX_VALUE)
                 .addComponent(btnEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addComponent(btnVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addGap(92, 92, 92))
         );
 
         pack();
@@ -145,10 +132,6 @@ public class MenuInicial extends javax.swing.JFrame {
     private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRelatorioActionPerformed
-
-    private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,7 +170,6 @@ public class MenuInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdmin;
     private javax.swing.JButton btnEstoque;
     private javax.swing.JButton btnRelatorio;
     private javax.swing.JButton btnVenda;

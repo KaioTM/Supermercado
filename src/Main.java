@@ -18,12 +18,7 @@ public class Main {
         Login login = new Login();
         login.setVisible(true);
        
-                
-
-//        PagamentoDinheiro d1 = new PagamentoDinheiro();
-//        d1.Troco(30,50);
-//            Caixa C1 = new Caixa();
-//            C1.setVisible(true);
+               
     }
 
 }

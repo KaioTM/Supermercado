@@ -5,13 +5,15 @@
  */
 package view;
 
+import controller.PagamentoCartao;
 import controller.PagamentoDinheiro;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author kaio.teixeira
  */
-public class Caixa extends javax.swing.JFrame {
+public class Caixa extends JanelaPadrao {
 
     /**
      * Creates new form Caixa
@@ -52,7 +54,7 @@ public class Caixa extends javax.swing.JFrame {
 
         lblValorPendente.setText("Valor Pendente:");
 
-        cmbTipoPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dinheiro", "Cartão de Crédito", "Cartão de Débito" }));
+        cmbTipoPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dinheiro", "Cartão de Crédito" }));
 
         lblTroco.setText("Troco:");
 
@@ -137,10 +139,22 @@ public class Caixa extends javax.swing.JFrame {
                 }
             }
             case 1: {
-
-            }
-            case 2: {
-
+                PagamentoCartao pagamentoCartao = new PagamentoCartao();
+                try {
+                    if(pagamentoCartao.Pagamento(Float.parseFloat(txtValorPendente.getText()), Float.parseFloat(txtValorRecebido.getText()))){
+                         JOptionPane.showMessageDialog(null, "Pagamento Efetuado com Sucesso");
+                    }else{
+                         JOptionPane.showMessageDialog(null, "Pagamento não aprovado");
+                    }
+                } catch (NumberFormatException e) {
+                    if (pagamentoCartao.Pagamento(Float.parseFloat(txtTotalCompra.getText()), Float.parseFloat(txtValorRecebido.getText()))){
+                        JOptionPane.showMessageDialog(null, "Pagamento Efetuado com Sucesso");
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Pagamento não aprovado");
+                    }
+                } finally {
+//                    this.dispose();
+                }
             }
 
         }
