@@ -15,14 +15,14 @@ import java.io.Serializable;
 public class Produto implements Serializable {
     private String idProduto;
     private String nomeProduto;
-    private float preço;
+    private float preco;
 
-    public float getPreço() {
-        return preço;
+    public float getPreco() {
+        return preco;
     }
 
-    public void setPreço(float preço) {
-        this.preço = preço;
+    public void setPreco(float preco) {
+        this.preco = preco;
     }
 
     public String getIdProduto() {
@@ -44,6 +44,6 @@ public class Produto implements Serializable {
     public Produto(String idProduto, String nomeProduto, float preço) {
         this.idProduto = idProduto;
         this.nomeProduto = nomeProduto;
-        this.preço = preço;
+        this.preco = preço;
     }
 }

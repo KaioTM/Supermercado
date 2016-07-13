@@ -93,7 +93,7 @@ public class Estoque implements Serializable {
         if (itens.containsKey(idProduto)) {
             return ("ID: " + itens.get(idProduto).getProduto().getIdProduto()
                     + "\nNome do produto: " + itens.get(idProduto).getProduto().getNomeProduto()
-                    + "\nPreço (Unidade): R$" + formatarFloat(itens.get(idProduto).getProduto().getPreço())
+                    + "\nPreço (Unidade): R$" + formatarFloat(itens.get(idProduto).getProduto().getPreco())
                     + "\nQt.Disponível: " + itens.get(idProduto).getQuantidade());
         }
         return ("Produto não encontrado.");
@@ -103,7 +103,7 @@ public class Estoque implements Serializable {
         if (itens.containsKey(idProduto)) {
             return ("ID: " + itens.get(idProduto).getProduto().getIdProduto()
                     + "\nNome do produto: " + itens.get(idProduto).getProduto().getNomeProduto()
-                    + "\nPreço (Unidade): R$" + formatarFloat(itens.get(idProduto).getProduto().getPreço()));
+                    + "\nPreço (Unidade): R$" + formatarFloat(itens.get(idProduto).getProduto().getPreco()));
         }
         return ("Produto não encontrado.");
     }
@@ -114,7 +114,7 @@ public class Estoque implements Serializable {
         for (String key : itens.keySet()) {
             displayArea.append("ID: " + itens.get(key).getProduto().getIdProduto()
                     + "\nNome do produto: " + itens.get(key).getProduto().getNomeProduto()
-                    + "\nPreço (Unidade): R$" + formatarFloat(itens.get(key).getProduto().getPreço())
+                    + "\nPreço (Unidade): R$" + formatarFloat(itens.get(key).getProduto().getPreco())
                     + "\nQt.Disponível: " + itens.get(key).getQuantidade()
                     + "\n_______________\n\n");
         }
