@@ -98,6 +98,28 @@ public class Estoque implements Serializable {
         }
         return ("Produto não encontrado.");
     }
+    
+    public String consultaProdutonNoLeitor(String idProduto) {
+        if (itens.containsKey(idProduto)) {
+            return ("ID: " + itens.get(idProduto).getProduto().getIdProduto()
+                    + "\nNome do produto: " + itens.get(idProduto).getProduto().getNomeProduto()
+                    + "\nPreço (Unidade): R$" + formatarFloat(itens.get(idProduto).getProduto().getPreço()));
+        }
+        return ("Produto não encontrado.");
+    }
+    
+       // Método responsável por listar todos os itens disponíveis no Estoque no momento
+    public void listaTodosItens(JTextArea displayArea) {
+        displayArea.setText("");
+        for (String key : itens.keySet()) {
+            displayArea.append("ID: " + itens.get(key).getProduto().getIdProduto()
+                    + "\nNome do produto: " + itens.get(key).getProduto().getNomeProduto()
+                    + "\nPreço (Unidade): R$" + formatarFloat(itens.get(key).getProduto().getPreço())
+                    + "\nQt.Disponível: " + itens.get(key).getQuantidade()
+                    + "\n_______________\n\n");
+            //System.out.println( key );
+        }
+    }
 
     //Método responsável por retirar um produto pelo ID
     public void retiraProduto(String id, int quantidadeSolicitada) {
@@ -123,18 +145,7 @@ public class Estoque implements Serializable {
         }
     }
 
-    // Método responsável por listar todos os itens disponíveis no Estoque no momento
-    public void listaTodosItens(JTextArea displayArea) {
-        displayArea.setText("");
-        for (String key : itens.keySet()) {
-            displayArea.append("ID: " + itens.get(key).getProduto().getIdProduto()
-                    + "\nNome do produto: " + itens.get(key).getProduto().getNomeProduto()
-                    + "\nPreço (Unidade): R$" + itens.get(key).getProduto().getPreço()
-                    + "\nQt.Disponível: " + itens.get(key).getQuantidade()
-                    + "\n_______________\n\n");
-            //System.out.println( key );
-        }
-    }
+ 
 
     public void identificaMudancaNoItem(Item itemAntigo, Item itemAtualizado, String observacao) {
         AtomicInteger idMudanca = new AtomicInteger(0);

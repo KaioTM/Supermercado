@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
  * @author KaioT
  */
 public class JanelaPadrao extends javax.swing.JFrame {
-static final ImageIcon iconeJanela = new ImageIcon("C:\\Users\\KaioT\\Documents\\GitHub\\Supermercado\\image\\shop-icon.png");
+static final ImageIcon iconeJanela = new ImageIcon("C:\\Users\\kaio.teixeira\\Documents\\GitHub\\Supermercado\\image\\shop-icon.png");
     /**
      * Creates new form JanelaPadrao
      */

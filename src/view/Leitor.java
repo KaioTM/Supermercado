@@ -48,7 +48,7 @@ public class Leitor extends javax.swing.JFrame implements ActionListener{
         }
 
         public void updateLog(DocumentEvent e, String action) {
-            displayArea.setText(Supermercado.getInstancia().getEstoque().consultaProduto(txtIdProduto.getText()));
+            displayArea.setText(Supermercado.getInstancia().getEstoque().consultaProdutonNoLeitor(txtIdProduto.getText()));
 //            displayArea.append(
 //                changeLength + " character"
 //              + ((changeLength == 1) ? " " : "s ")

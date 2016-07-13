@@ -22,7 +22,7 @@ public class MenuInicial extends javax.swing.JFrame {
     public MenuInicial() {
         initComponents();
         this.setIconImage(JanelaPadrao.iconeJanela.getImage());
-        if (Supermercado.getInstancia().getCadastro().getUsuarioLogado().acessaEstoque()) {
+        if (Supermercado.getInstancia().getCadastro().getUsuarioLogado().acessoGerente()) {
 
             btnEstoque.setEnabled(true);
             btnRelatorio.setEnabled(true);
@@ -137,6 +137,9 @@ public class MenuInicial extends javax.swing.JFrame {
 
     private void btnVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaActionPerformed
         // TODO add your handling code here:
+        Caixa novoCaixa = new Caixa();
+        novoCaixa.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnVendaActionPerformed
 
     private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed

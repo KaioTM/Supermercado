@@ -20,7 +20,7 @@ public class Gerente extends Usuario{
      *
      * @return
      */
-    public boolean acessaEstoque(){
+    public boolean acessoGerente(){
         return true;
           
     }

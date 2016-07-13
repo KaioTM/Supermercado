@@ -17,7 +17,7 @@ public class Main {
 
         Login login = new Login();
         login.setVisible(true);
-        System.out.print(Supermercado.getInstancia().getRelatorios().getMudancaEstoque().get(0).getObservacao());
+       
                 
 
 //        PagamentoDinheiro d1 = new PagamentoDinheiro();
