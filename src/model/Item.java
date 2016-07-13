@@ -22,6 +22,9 @@ public class Item implements Serializable {
         this.produto = produto;
         this.quantidade = quantidade;
     }
+    public Item(){
+     
+    }
    
     public Produto getProduto() {
         return produto;

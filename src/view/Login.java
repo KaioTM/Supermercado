@@ -1,22 +1,21 @@
 package view;
 
-
 import controller.Supermercado;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author KaioT
  */
-public class Login extends javax.swing.JFrame{
+public class Login extends javax.swing.JFrame {
 
     /**
      * Creates new form Menu_init
@@ -67,35 +66,35 @@ public class Login extends javax.swing.JFrame{
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnEntrar)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblLogin)
-                            .addComponent(lblSenha))
-                        .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(fldSenha)
-                            .addComponent(fldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(102, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                .addComponent(btnEntrar)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(lblLogin)
+                                                .addComponent(lblSenha))
+                                        .addGap(4, 4, 4)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(fldSenha)
+                                                .addComponent(fldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(102, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(64, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLogin)
-                    .addComponent(fldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSenha)
-                    .addComponent(fldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnEntrar)
-                .addGap(52, 52, 52))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(64, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblLogin)
+                                .addComponent(fldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblSenha)
+                                .addComponent(fldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEntrar)
+                        .addGap(52, 52, 52))
         );
 
         pack();
@@ -115,29 +114,24 @@ public class Login extends javax.swing.JFrame{
 					}
         }  */
 //}
-    
-    
-    
-    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {                                          
-				if(evt.getSource() == btnEntrar){
-					if(Supermercado.getInstancia().getCadastro().validaUsername(fldLogin.getText()) && (Supermercado.getInstancia().getCadastro().validaSenha(fldLogin.getText(), fldSenha.getText()))){
-                                            JOptionPane.showMessageDialog(null, "Logado com sucesso.");
-                                            this.dispose();
-                                            
-                                       
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {
+        if (evt.getSource() == btnEntrar) {
+            if (Supermercado.getInstancia().getCadastro().validaUsername(fldLogin.getText()) && (Supermercado.getInstancia().getCadastro().validaSenha(fldLogin.getText(), fldSenha.getText()))) {
+                JOptionPane.showMessageDialog(null, "Logado com sucesso.");
+                this.dispose();
 
-                                            MenuInicial.init();
-                                                
-					}else{
-						JOptionPane.showMessageDialog(null, "Usuário ou Senha inválida");
-					}
-				}
-			
-    }                                         
+                MenuInicial.init();
 
-    private void fldLoginActionPerformed(java.awt.event.ActionEvent evt) {                                         
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuário ou Senha inválida");
+            }
+        }
+
+    }
+
+    private void fldLoginActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                        
+    }
 
     /**
      * @param args the command line arguments

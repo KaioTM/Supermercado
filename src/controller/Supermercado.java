@@ -22,6 +22,7 @@ import java.util.ArrayList;
 public class Supermercado implements Serializable {
     private Estoque estoque;
     private Cadastro cadastro;
+    private Relatorios relatorios;
     private static final String NOME_ARQUIVO = "supermercado.ser";
 //Singleton
     private static Supermercado instancia = null;
@@ -34,6 +35,8 @@ public class Supermercado implements Serializable {
     private Supermercado(){
         estoque = new Estoque();
         cadastro = new Cadastro();
+        relatorios = new Relatorios();
+        
     }
     //Singleton
 
@@ -82,6 +85,14 @@ public class Supermercado implements Serializable {
                }catch(IOException i){
                   i.printStackTrace();
                 }
+    }
+
+    public Relatorios getRelatorios() {
+        return relatorios;
+    }
+
+    public void setRelatorios(Relatorios relatorios) {
+        this.relatorios = relatorios;
     }
     
     

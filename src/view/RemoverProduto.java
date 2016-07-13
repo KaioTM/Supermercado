@@ -5,13 +5,14 @@
  */
 package view;
 import controller.Estoque;
+import controller.Supermercado;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author KaioT
  */
-public class RemoverProduto extends javax.swing.JFrame {
+public class RemoverProduto extends JanelaPadrao {
 
     /**
      * Creates new form RemoverProduto
@@ -35,10 +36,17 @@ public class RemoverProduto extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtProdutoConsultado = new javax.swing.JTextArea();
         btnRemover = new javax.swing.JButton();
+        txtQuantidade = new javax.swing.JTextField();
+        lblQuantidade = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
-        setSize(new java.awt.Dimension(520, 300));
+        setSize(new java.awt.Dimension(550, 350));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         lblIdProduto.setText("Id do Produto:");
 
@@ -61,29 +69,40 @@ public class RemoverProduto extends javax.swing.JFrame {
             }
         });
 
+        txtQuantidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtQuantidadeActionPerformed(evt);
+            }
+        });
+
+        lblQuantidade.setText("Quantidade:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(229, Short.MAX_VALUE)
+                .addContainerGap(262, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblQuantidade)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRemover))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lblIdProduto)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtIdProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnConsultar))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnRemover)
-                        .addGap(91, 91, 91)))
-                .addGap(29, 29, 29))
+                        .addComponent(btnConsultar)))
+                .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblIdProduto)
                     .addComponent(txtIdProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -91,8 +110,11 @@ public class RemoverProduto extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnRemover)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblQuantidade)
+                    .addComponent(btnRemover))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();
@@ -107,9 +129,16 @@ public class RemoverProduto extends javax.swing.JFrame {
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showInputDialog("Digite a quantidade:", 1);
-        //Estoque.retiraProduto(nomeProduto, HIDE_ON_CLOSE);
+        Supermercado.getInstancia().getEstoque().retiraProduto(txtIdProduto.getText(), Integer.parseInt(txtQuantidade.getText()));
     }//GEN-LAST:event_btnRemoverActionPerformed
+
+    private void txtQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQuantidadeActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        Supermercado.getInstancia().salvaSupermercado();
+    }//GEN-LAST:event_formWindowClosed
     
     
     /**
@@ -147,7 +176,9 @@ public class RemoverProduto extends javax.swing.JFrame {
     private javax.swing.JButton btnRemover;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblIdProduto;
+    private javax.swing.JLabel lblQuantidade;
     private javax.swing.JTextField txtIdProduto;
     private javax.swing.JTextArea txtProdutoConsultado;
+    private javax.swing.JTextField txtQuantidade;
     // End of variables declaration//GEN-END:variables
 }
