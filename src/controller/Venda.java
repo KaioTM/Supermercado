@@ -88,9 +88,12 @@ public class Venda {
 
     public boolean removeItem(String id, int quantidadeSolicitada) {
         boolean itemRemovido = false;
-        Produto produtoSolicitado = this.itensVenda.get(idVenda).getProduto();
-        Item itemSolicitado = new Item(produtoSolicitado, quantidadeSolicitada);
-
+        Produto produtoDevolvido = this.itensVenda.get(idVenda).getProduto();
+        //Item itemSolicitado = new Item(produtoSolicitado, quantidadeSolicitada);
+        //alteraProduto(String IdProduto, int Quantidade);
+        
+        
+        
         if (Supermercado.getInstancia().getEstoque().getItens().containsKey(id)) {
             if (Supermercado.getInstancia().getEstoque().getItens().get(id).getQuantidade() < quantidadeSolicitada) {
                 JOptionPane.showMessageDialog(null, "Quantidade não disponível");
