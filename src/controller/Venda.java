@@ -75,7 +75,7 @@ public class Venda {
         if (Supermercado.getInstancia().getEstoque().getItens().containsKey(id)) {
             if (Supermercado.getInstancia().getEstoque().getItens().get(id).getQuantidade() < quantidadeSolicitada) {
                 JOptionPane.showMessageDialog(null, "Quantidade não disponível");
-            } else if (Supermercado.getInstancia().getEstoque().getItens().get(id).getQuantidade() == quantidadeSolicitada) {
+            } else {
                 this.itensVenda.add(itemSolicitado);
                 Supermercado.getInstancia().getEstoque().retiraProduto(id, quantidadeSolicitada);
                 vendaRegistrada = true;
@@ -91,14 +91,12 @@ public class Venda {
         Produto produtoDevolvido = this.itensVenda.get(idVenda).getProduto();
         //Item itemSolicitado = new Item(produtoSolicitado, quantidadeSolicitada);
         //alteraProduto(String IdProduto, int Quantidade);
-        
-        
-        
+
         if (Supermercado.getInstancia().getEstoque().getItens().containsKey(id)) {
             if (Supermercado.getInstancia().getEstoque().getItens().get(id).getQuantidade() < quantidadeSolicitada) {
                 JOptionPane.showMessageDialog(null, "Quantidade não disponível");
             } else if (Supermercado.getInstancia().getEstoque().getItens().get(id).getQuantidade() == quantidadeSolicitada) {
-                this.itensVenda.add(itemSolicitado);
+                //this.itensVenda.add(itemSolicitado);
                 Supermercado.getInstancia().getEstoque().retiraProduto(id, quantidadeSolicitada);
                 itemRemovido = true;
             }

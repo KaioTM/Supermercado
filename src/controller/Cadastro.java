@@ -19,7 +19,7 @@ import model.Gerente;
  * @author kaio.teixeira
  */
 public class Cadastro implements Serializable {
-    public Map<String,Usuario> cadastro = new HashMap<String,Usuario>();
+    private Map<String,Usuario> cadastro = new HashMap<String,Usuario>();
     //public static Map<String,Gerente> cadastroGerente = new HashMap<String,Gerente>();
     private static Usuario usuarioLogado;
     
@@ -51,6 +51,14 @@ public class Cadastro implements Serializable {
 
     public Usuario getUsuarioLogado() {
         return usuarioLogado;
+    }
+
+    public Map<String,Usuario> getCadastro() {
+        return cadastro;
+    }
+
+    public void setCadastro(Map<String,Usuario> cadastro) {
+        this.cadastro = cadastro;
     }
 
 }
