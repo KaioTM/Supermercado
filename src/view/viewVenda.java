@@ -200,6 +200,7 @@ public class viewVenda extends javax.swing.JFrame {
             this.list.add(item);
             jTextQuantidade.setText("");
             jValorTotal.setText(calculaValorTotal() + "");
+            System.out.println(Supermercado.getInstancia().getEstoque().getItens().get(idsString).getQuantidade());
         }
     }//GEN-LAST:event_jAdicionarProdutoActionPerformed
 
@@ -226,11 +227,11 @@ public class viewVenda extends javax.swing.JFrame {
         while (model.getRowCount() != 0) {
             int id = acharId((String) jProdutos.getSelectedItem(), Supermercado.getInstancia().getEstoque().getItens());
             String idsString = id + "";
-            int quantidade = (int) model.getValueAt(jTableListVenda.getSelectedRow(), 2);
+            String quantidade =  (String) model.getValueAt(jTableListVenda.getSelectedRow(), 2);
             list.remove(jTableListVenda.getSelectedRow());
             model.removeRow(jTableListVenda.getSelectedRow());
             jValorTotal.setText(calculaValorTotal() + "");
-            this.venda.removeItem(idsString, quantidade);  
+            this.venda.removeItem(idsString, Integer.parseInt(quantidade));  
         }
     }//GEN-LAST:event_jCancelarActionPerformed
   

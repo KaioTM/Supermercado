@@ -33,7 +33,7 @@ public class MenuInicial extends javax.swing.JFrame {
         } else {
             
             btnEstoque.setEnabled(false);
-            btnRelatorio.setEnabled(true);
+            btnRelatorio.setEnabled(false);
             btnVenda.setEnabled(true);
             
 

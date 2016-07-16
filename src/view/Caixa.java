@@ -7,9 +7,14 @@ package view;
 
 import controller.PagamentoCartao;
 import controller.PagamentoDinheiro;
+import controller.RepositorioVenda;
+import controller.Supermercado;
+import controller.Venda;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import model.Item;
+import model.Usuario;
 
 /**
  *
@@ -74,6 +79,11 @@ public class Caixa extends JanelaPadrao {
         lblValorPendente.setText("Valor Pendente:");
 
         cmbTipoPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dinheiro", "Cartão de Crédito" }));
+        cmbTipoPagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTipoPagamentoActionPerformed(evt);
+            }
+        });
 
         lblTroco.setText("Troco:");
 
@@ -159,8 +169,7 @@ public class Caixa extends JanelaPadrao {
 
         switch (cmbTipoPagamento.getSelectedIndex()) {
             case 0: {
-                txtValorPendente.setVisible(true);
-                txtValorRecebido.setEnabled(true);
+
                 PagamentoDinheiro pagamentoDinheiro = new PagamentoDinheiro();
                 try {
                     pagamentoDinheiro.Pagamento(Float.parseFloat(txtValorPendente.getText()), Float.parseFloat(txtValorRecebido.getText()));
@@ -169,16 +178,24 @@ public class Caixa extends JanelaPadrao {
                 } finally {
                     txtTroco.setText(String.valueOf(pagamentoDinheiro.getTroco()));
                     txtValorPendente.setText(String.valueOf(pagamentoDinheiro.getPagamentoPendente()));
-                }
+                    Venda novaVenda = new Venda();
+                    novaVenda.setItensVenda(listFinal);
+                    novaVenda.setCaixa(Supermercado.getInstancia().getCadastro().getUsuarioLogado());
+                    String data = new Date().toString();
+                    novaVenda.setData(data);
+                    novaVenda.setIdVenda(RepositorioVenda.lista.size());
 
+                }
             }
             case 1: {
                 PagamentoCartao pagamentoCartao = new PagamentoCartao();
-                txtValorPendente.setVisible(false);
-                txtTotalCompra.setEnabled(false);
-                txtValorRecebido.setEnabled(false);
-                btnPagar.setEnabled(true);
                 txtValorRecebido.setText(txtTotalCompra.getText());
+                Venda novaVenda = new Venda();
+                novaVenda.setItensVenda(listFinal);
+                novaVenda.setCaixa(Supermercado.getInstancia().getCadastro().getUsuarioLogado());
+                String data = new Date().toString();
+                novaVenda.setData(data);
+                novaVenda.setIdVenda(RepositorioVenda.lista.size());
 
             }
         }
@@ -194,6 +211,21 @@ public class Caixa extends JanelaPadrao {
         this.dispose();
         this.pai.setVisible(true);
     }//GEN-LAST:event_jVoltarActionPerformed
+
+    private void cmbTipoPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoPagamentoActionPerformed
+
+        if (cmbTipoPagamento.getSelectedItem().equals("Dinheiro")) {
+            txtValorPendente.setVisible(true);
+            txtValorRecebido.setEnabled(true);
+        } else {
+            txtValorPendente.setVisible(false);
+            txtTotalCompra.setEnabled(false);
+            txtValorRecebido.setText(valorTotal);
+            txtValorRecebido.setEnabled(false);
+            btnPagar.setEnabled(true);
+        }
+
+    }//GEN-LAST:event_cmbTipoPagamentoActionPerformed
 
     /**
      * @param args the command line arguments
