@@ -11,27 +11,27 @@ package model;
  */
 public class MudancaEstoque {
 
-    public MudancaEstoque(String idMudanca, String data, Item itemAntigo, Item itemAtualizado, Usuario Responsavel,String observacao) {
+    public MudancaEstoque(String idMudanca, String data, Item itemAntigo, Item itemAtualizado, Usuario responsavel,String observacao) {
         this.idMudanca = idMudanca;
         this.data = data;
         this.itemAntigo = itemAntigo;
         this.itemAtualizado = itemAtualizado;
-        this.Responsavel = Responsavel;
+        this.responsavel = responsavel;
         this.observacao = observacao;
     }
     
-    public MudancaEstoque(String idMudanca, String data, Item itemAntigo, Usuario Responsavel,String observacao) {
+    public MudancaEstoque(String idMudanca, String data, Item itemAntigo, Usuario responsavel,String observacao) {
         this.idMudanca = idMudanca;
         this.data = data;
         this.itemAntigo = itemAntigo;
-        this.Responsavel = Responsavel;
+        this.responsavel = responsavel;
         this.observacao = observacao;
     }
     private String idMudanca;
     private String data;
     private Item itemAntigo;
     private Item itemAtualizado;
-    private Usuario Responsavel;
+    private Usuario responsavel;
     private String observacao;
     
     
@@ -68,11 +68,11 @@ public class MudancaEstoque {
     }
 
     public Usuario getResponsavel() {
-        return Responsavel;
+        return responsavel;
     }
 
-    public void setResponsavel(Usuario Responsavel) {
-        this.Responsavel = Responsavel;
+    public void setResponsavel(Usuario responsavel) {
+        this.responsavel = responsavel;
     }
 
     public String getObservacao() {

@@ -189,12 +189,12 @@ public class viewVenda extends javax.swing.JFrame {
     private void jAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAdicionarProdutoActionPerformed
         int id = acharId((String) jProdutos.getSelectedItem(), Supermercado.getInstancia().getEstoque().getItens());
         String idsString = id + "";
-        int auxquantidade = Integer.parseInt(jTextQuantidade.getText());
+        int auxQuantidade = Integer.parseInt(jTextQuantidade.getText());
 
-        if (this.venda.registraItem(idsString, auxquantidade)) {
+        if (this.venda.registraItem(idsString, auxQuantidade)) {
             DefaultTableModel model = (DefaultTableModel) jTableListVenda.getModel();
             Produto produto = Supermercado.getInstancia().getEstoque().getItens().get(idsString).getProduto();
-            Object[] obj = {produto.getNomeProduto(), produto.getPreco(), auxquantidade};
+            Object[] obj = {produto.getNomeProduto(), produto.getPreco(), auxQuantidade};
             model.insertRow(model.getRowCount(), obj);
             Item item = new Item(produto, Integer.parseInt(jTextQuantidade.getText()));
             this.list.add(item);

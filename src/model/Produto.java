@@ -41,9 +41,9 @@ public class Produto implements Serializable {
         this.nomeProduto = nomeProduto;
     }
 
-    public Produto(String idProduto, String nomeProduto, float preço) {
+    public Produto(String idProduto, String nomeProduto, float preco) {
         this.idProduto = idProduto;
         this.nomeProduto = nomeProduto;
-        this.preco = preço;
+        this.preco = preco;
     }
 }

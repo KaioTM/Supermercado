@@ -23,7 +23,7 @@ public class Supermercado implements Serializable {
     private Estoque estoque;
     private Cadastro cadastro;
     private Relatorios relatorios;
-    private static final String NOME_ARQUIVO = "supermercado.ser";
+    private static final String nome_arquivo = "supermercado.ser";
 //Singleton
     private static Supermercado instancia = null;
     public static synchronized Supermercado getInstancia(){
@@ -52,7 +52,7 @@ public class Supermercado implements Serializable {
         
         try
       {
-         FileInputStream fileIn = new FileInputStream(NOME_ARQUIVO);
+         FileInputStream fileIn = new FileInputStream(nome_arquivo);
          ObjectInputStream in = new ObjectInputStream(fileIn);
          estoque = (Estoque) in.readObject();
          cadastro = (Cadastro) in.readObject();
@@ -75,7 +75,7 @@ public class Supermercado implements Serializable {
      public void salvaSupermercado (){
             
         try{
-                 FileOutputStream fileOut = new FileOutputStream(NOME_ARQUIVO);
+                 FileOutputStream fileOut = new FileOutputStream(nome_arquivo);
                  ObjectOutputStream out = new ObjectOutputStream(fileOut);  
                  out.writeObject(estoque);
                  out.writeObject(cadastro);

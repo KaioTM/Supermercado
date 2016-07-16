@@ -67,7 +67,7 @@ public class Estoque implements Serializable {
 
     }
     
-    public void alteraProduto(String IdProduto, Float Preco) {
+    public void alteraProduto(String IdProduto, Float preco) {
 
     }
 
