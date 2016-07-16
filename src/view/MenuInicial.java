@@ -117,7 +117,7 @@ public class MenuInicial extends javax.swing.JFrame {
 
     private void btnEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstoqueActionPerformed
         // TODO add your handling code here:
-        ViewEstoque estoque = new ViewEstoque();
+        viewEstoque estoque = new viewEstoque();
         estoque.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnEstoqueActionPerformed
