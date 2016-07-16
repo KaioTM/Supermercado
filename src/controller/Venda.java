@@ -92,29 +92,10 @@ public class Venda {
         //Item itemSolicitado = new Item(produtoSolicitado, quantidadeSolicitada);
         //alteraProduto(String IdProduto, int Quantidade);
 
-        if (Supermercado.getInstancia().getEstoque().getItens().containsKey(id)) {
-            if (Supermercado.getInstancia().getEstoque().getItens().get(id).getQuantidade() < quantidadeSolicitada) {
-                JOptionPane.showMessageDialog(null, "Quantidade não disponível");
-            } else if (Supermercado.getInstancia().getEstoque().getItens().get(id).getQuantidade() == quantidadeSolicitada) {
-                //this.itensVenda.add(itemSolicitado);
-                Supermercado.getInstancia().getEstoque().retiraProduto(id, quantidadeSolicitada);
-                itemRemovido = true;
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Produto não encontrado");
-        }
-
-        return itemRemovido;
+        if (Supermercado.getInstancia().getEstoque().getItens().containsKey(id)) {         
+             Supermercado.getInstancia().getEstoque().alteraProduto(id, quantidadeSolicitada);
+               itemRemovido = true;
+        } 
+          return itemRemovido;
     }
-
-    public float calculaValorTotal() {
-        float calculoTotal = 0;
-
-        for (int i = 0; i < this.getItensVenda().size(); i++) {
-            float valorTotalItem = (this.getItensVenda().get(i).getQuantidade() * this.getItensVenda().get(i).getProduto().getPreco());
-            calculoTotal += valorTotalItem;
-        }
-        return calculoTotal;
-    }
-
 }

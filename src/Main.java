@@ -19,14 +19,14 @@ public class Main {
         Login login = new Login();
         login.setVisible(true);
 
-       Venda venda1 = new Venda(0, "14/07/2016", Supermercado.getInstancia().getCadastro().getCadastro().get("kteixeira"));
-       venda1.registraItem("1", 1);
-       System.out.println(venda1.getIdVenda());
-       System.out.println(venda1.getData());
-       System.out.println(venda1.getCaixa().getNome());
-       System.out.println(venda1.getItensVenda().get(0).getProduto().getNomeProduto());
-       System.out.println(venda1.getItensVenda().get(0).getProduto().getPreco());
-       System.out.println(venda1.getItensVenda().get(0).getQuantidade());
+//       Venda venda1 = new Venda(0, "14/07/2016", Supermercado.getInstancia().getCadastro().getCadastro().get("kteixeira"));
+//       venda1.registraItem("1", 1);
+//       System.out.println(venda1.getIdVenda());
+//       System.out.println(venda1.getData());
+//       System.out.println(venda1.getCaixa().getNome());
+//       System.out.println(venda1.getItensVenda().get(0).getProduto().getNomeProduto());
+//       System.out.println(venda1.getItensVenda().get(0).getProduto().getPreco());
+//       System.out.println(venda1.getItensVenda().get(0).getQuantidade());
     }
 
 }

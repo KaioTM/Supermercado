@@ -7,7 +7,9 @@ package view;
 
 import controller.PagamentoCartao;
 import controller.PagamentoDinheiro;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import model.Item;
 
 /**
  *
@@ -15,11 +17,21 @@ import javax.swing.JOptionPane;
  */
 public class Caixa extends JanelaPadrao {
 
+    private String valorTotal;
+    private ArrayList<Item> listFinal;
+    private viewVenda pai;
+
     /**
      * Creates new form Caixa
      */
-    public Caixa() {
+    public Caixa(String valor, ArrayList<Item> list, viewVenda tela) {
         initComponents();
+        this.listFinal = list;
+        this.valorTotal = valor;
+        txtTotalCompra.setText(valorTotal);
+        this.pai = tela;
+        txtTroco.setEnabled(false);
+        txtTotalCompra.setEnabled(false);
 
     }
 
@@ -42,9 +54,16 @@ public class Caixa extends JanelaPadrao {
         lblTroco = new javax.swing.JLabel();
         txtTroco = new javax.swing.JTextField();
         btnPagar = new javax.swing.JButton();
+        jVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+
+        txtTotalCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTotalCompraActionPerformed(evt);
+            }
+        });
 
         lblTotalCompra.setText("Total da Compra:");
 
@@ -62,6 +81,13 @@ public class Caixa extends JanelaPadrao {
         btnPagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPagarActionPerformed(evt);
+            }
+        });
+
+        jVoltar.setText("Voltar");
+        jVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jVoltarActionPerformed(evt);
             }
         });
 
@@ -85,14 +111,17 @@ public class Caixa extends JanelaPadrao {
                     .addComponent(txtTotalCompra))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jVoltar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblTroco)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtTroco, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnPagar)
                         .addGap(22, 22, 22))))
         );
@@ -114,11 +143,12 @@ public class Caixa extends JanelaPadrao {
                     .addComponent(lblValorRecebido))
                 .addGap(18, 18, 18)
                 .addComponent(btnPagar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTroco)
-                    .addComponent(txtTroco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26))
+                    .addComponent(txtTroco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jVoltar))
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -126,8 +156,11 @@ public class Caixa extends JanelaPadrao {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
+
         switch (cmbTipoPagamento.getSelectedIndex()) {
             case 0: {
+                txtValorPendente.setVisible(true);
+                txtValorRecebido.setEnabled(true);
                 PagamentoDinheiro pagamentoDinheiro = new PagamentoDinheiro();
                 try {
                     pagamentoDinheiro.Pagamento(Float.parseFloat(txtValorPendente.getText()), Float.parseFloat(txtValorRecebido.getText()));
@@ -137,30 +170,30 @@ public class Caixa extends JanelaPadrao {
                     txtTroco.setText(String.valueOf(pagamentoDinheiro.getTroco()));
                     txtValorPendente.setText(String.valueOf(pagamentoDinheiro.getPagamentoPendente()));
                 }
+
             }
             case 1: {
                 PagamentoCartao pagamentoCartao = new PagamentoCartao();
-                try {
-                    if(pagamentoCartao.Pagamento(Float.parseFloat(txtValorPendente.getText()), Float.parseFloat(txtValorRecebido.getText()))){
-                         JOptionPane.showMessageDialog(null, "Pagamento Efetuado com Sucesso");
-                    }else{
-                         JOptionPane.showMessageDialog(null, "Pagamento não aprovado");
-                    }
-                } catch (NumberFormatException e) {
-                    if (pagamentoCartao.Pagamento(Float.parseFloat(txtTotalCompra.getText()), Float.parseFloat(txtValorRecebido.getText()))){
-                        JOptionPane.showMessageDialog(null, "Pagamento Efetuado com Sucesso");
-                    }else{
-                        JOptionPane.showMessageDialog(null, "Pagamento não aprovado");
-                    }
-                } finally {
-//                    this.dispose();
-                }
-            }
+                txtValorPendente.setVisible(false);
+                txtTotalCompra.setEnabled(false);
+                txtValorRecebido.setEnabled(false);
+                btnPagar.setEnabled(true);
+                txtValorRecebido.setText(txtTotalCompra.getText());
 
+            }
         }
 
 
     }//GEN-LAST:event_btnPagarActionPerformed
+
+    private void txtTotalCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalCompraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalCompraActionPerformed
+
+    private void jVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVoltarActionPerformed
+        this.dispose();
+        this.pai.setVisible(true);
+    }//GEN-LAST:event_jVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,7 +225,7 @@ public class Caixa extends JanelaPadrao {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Caixa().setVisible(true);
+                new Caixa(null, null, null).setVisible(true);
             }
         });
     }
@@ -200,6 +233,7 @@ public class Caixa extends JanelaPadrao {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPagar;
     private javax.swing.JComboBox<String> cmbTipoPagamento;
+    private javax.swing.JButton jVoltar;
     private javax.swing.JLabel lblTotalCompra;
     private javax.swing.JLabel lblTroco;
     private javax.swing.JLabel lblValorPendente;

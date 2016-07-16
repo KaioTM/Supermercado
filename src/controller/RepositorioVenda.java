@@ -36,7 +36,7 @@ public class RepositorioVenda {
             
         }
         
-        if (venda.getNumero() <= 0){
+        if (venda.getIdVenda() <= 0){
             throw new Exception("Informar o número da venda");
         }
         
@@ -65,7 +65,7 @@ public class RepositorioVenda {
             throw new Exception("A venda não foi instanciada");
         }
         
-        if (venda.getNumero() <= 0){
+        if (venda.getIdVenda() <= 0){
             throw new Exception("Informar o número da venda");
         }
         
@@ -81,7 +81,7 @@ public class RepositorioVenda {
             throw new Exception("A venda não foi instanciada");
         }
         
-        if (venda.getNumero() <= 0){
+        if (venda.getIdVenda() <= 0){
             throw new Exception("Informar o número da venda");
         }
         
@@ -106,7 +106,7 @@ public class RepositorioVenda {
     public int verificaExistencia(Venda venda){
         int retorno = -1;
         for (int i = 0; i < this.lista.size(); i++){
-            if (venda.getNumero() == this.lista.get(i).getNumero()){
+            if (venda.getIdVenda() == this.lista.get(i).getIdVenda()){
                 retorno = i;
                 break;
             }

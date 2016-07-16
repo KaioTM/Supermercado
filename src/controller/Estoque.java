@@ -63,18 +63,20 @@ public class Estoque implements Serializable {
 
     }
 
-    // Falta Implementar a alteração do produto
-    public void alteraProduto(String IdProduto, String Nome) {
+    public void alteraProduto(String IdProduto, String nome) {
 
     }
-
+    
     public void alteraProduto(String IdProduto, Float Preco) {
 
     }
 
     public void alteraProduto(String IdProduto, int Quantidade) {
-
+        int itematual = itens.get(IdProduto).getQuantidade();
+        itens.get(IdProduto).setQuantidade(itematual + Quantidade);
     }
+
+ 
 
     //Método Responsável por formatar o campo Preço
     public String formatarFloat(float numero) {
@@ -134,7 +136,7 @@ public class Estoque implements Serializable {
                 itemOriginal = itens.get(id);
                 itens.get(id).setQuantidade(itens.get(id).getQuantidade() - quantidadeSolicitada);
                 identificaMudancaNoItem(itemOriginal, itens.get(id), "Item modificado");
-                JOptionPane.showMessageDialog(null, "Quantidade retirada com Sucesso");
+//                JOptionPane.showMessageDialog(null, "Quantidade retirada com Sucesso");
             } else {
                 JOptionPane.showMessageDialog(null, "Quantidade Inválida!");
             }
