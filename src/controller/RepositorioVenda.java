@@ -5,25 +5,26 @@
  */
 package controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author lfigueiredo
  */
-public class RepositorioVenda {
+public class RepositorioVenda  implements Serializable {
     
-    public static ArrayList<Venda> lista;
-    private static RepositorioVenda instanciaRep;
+    private  ArrayList<Venda> lista;
+    private  RepositorioVenda instanciaRep;
     
     public RepositorioVenda(){
         this.lista = new ArrayList<Venda>();
     }
     public static RepositorioVenda obterInstancia(){
-        if (instanciaRep == null){
-            instanciaRep = new RepositorioVenda();
+        if (RepositorioVenda.obterInstancia().instanciaRep == null){
+            RepositorioVenda.obterInstancia().instanciaRep = new RepositorioVenda();
         }
-        return instanciaRep;
+        return  RepositorioVenda.obterInstancia().instanciaRep;
         
     }
     public ArrayList<Venda> listarTodos(){
@@ -113,4 +114,12 @@ public class RepositorioVenda {
         }
         return retorno;
     } 
+
+    public ArrayList<Venda> getLista() {
+        return lista;
+    }
+
+    public void setLista(ArrayList<Venda> lista) {
+        this.lista = lista;
+    }
 }

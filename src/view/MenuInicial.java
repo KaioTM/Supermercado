@@ -33,7 +33,7 @@ public class MenuInicial extends javax.swing.JFrame {
         } else {
             
             btnEstoque.setEnabled(false);
-            btnRelatorio.setEnabled(false);
+            btnRelatorio.setEnabled(true);
             btnVenda.setEnabled(true);
             
 
@@ -132,7 +132,9 @@ public class MenuInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVendaActionPerformed
 
     private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
-        // TODO add your handling code here:
+        ViewRelatorioVenda relatorioVenda = new ViewRelatorioVenda();
+        relatorioVenda.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnRelatorioActionPerformed
 
     /**

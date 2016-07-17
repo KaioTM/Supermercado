@@ -17,26 +17,29 @@ import java.util.ArrayList;
  *
  * @author kaio.teixeira
  */
-
-
 public class Supermercado implements Serializable {
+
     private Estoque estoque;
     private Cadastro cadastro;
+    private RepositorioVenda venda;
     private Relatorios relatorios;
     private static final String nome_arquivo = "supermercado.ser";
 //Singleton
     private static Supermercado instancia = null;
-    public static synchronized Supermercado getInstancia(){
-        if (instancia == null){
+
+    public static synchronized Supermercado getInstancia() {
+        if (instancia == null) {
             instancia = new Supermercado();
         }
         return instancia;
     }
-    private Supermercado(){
+
+    private Supermercado() {
         estoque = new Estoque();
         cadastro = new Cadastro();
+        venda = new RepositorioVenda();
         relatorios = new Relatorios();
-        
+
     }
     //Singleton
 
@@ -47,44 +50,43 @@ public class Supermercado implements Serializable {
     public Cadastro getCadastro() {
         return cadastro;
     }
-    
-     public void carregaSupermercado(){
-        
-        try
-      {
-         FileInputStream fileIn = new FileInputStream(nome_arquivo);
-         ObjectInputStream in = new ObjectInputStream(fileIn);
-         estoque = (Estoque) in.readObject();
-         cadastro = (Cadastro) in.readObject();
-         in.close();
-         fileIn.close();
-         System.out.println("Sistema Carregado");
-      }catch(IOException i)
-      {
-         i.printStackTrace();
-         return;
-      }catch(ClassNotFoundException c)
-      {
-         System.out.println("not found");
-         c.printStackTrace();
-         return;
-      }
+
+    public void carregaSupermercado() {
+
+        try {
+            FileInputStream fileIn = new FileInputStream(nome_arquivo);
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            estoque = (Estoque) in.readObject();
+            cadastro = (Cadastro) in.readObject();
+            venda = (RepositorioVenda) in.readObject();
+            in.close();
+            fileIn.close();
+            System.out.println("Sistema Carregado");
+        } catch (IOException i) {
+            i.printStackTrace();
+            return;
+        } catch (ClassNotFoundException c) {
+            System.out.println("not found");
+            c.printStackTrace();
+            return;
+        }
 
     }
-     
-     public void salvaSupermercado (){
-            
-        try{
-                 FileOutputStream fileOut = new FileOutputStream(nome_arquivo);
-                 ObjectOutputStream out = new ObjectOutputStream(fileOut);  
-                 out.writeObject(estoque);
-                 out.writeObject(cadastro);
-                 out.close();
-                 fileOut.close();
-                 System.out.printf("Serialized data saved");
-               }catch(IOException i){
-                  i.printStackTrace();
-                }
+
+    public void salvaSupermercado() {
+
+        try {
+            FileOutputStream fileOut = new FileOutputStream(nome_arquivo);
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(estoque);
+            out.writeObject(cadastro);
+            out.writeObject(venda);
+            out.close();
+            fileOut.close();
+            System.out.printf("Serialized data saved");
+        } catch (IOException i) {
+            i.printStackTrace();
+        }
     }
 
     public Relatorios getRelatorios() {
@@ -94,7 +96,13 @@ public class Supermercado implements Serializable {
     public void setRelatorios(Relatorios relatorios) {
         this.relatorios = relatorios;
     }
-    
-    
-    
+
+    public RepositorioVenda getVenda() {
+        return venda;
+    }
+
+    public void setVenda(RepositorioVenda venda) {
+        this.venda = venda;
+    }
+
 }

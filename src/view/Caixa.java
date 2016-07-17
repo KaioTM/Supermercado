@@ -10,8 +10,11 @@ import controller.PagamentoDinheiro;
 import controller.RepositorioVenda;
 import controller.Supermercado;
 import controller.Venda;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Item;
 import model.Usuario;
@@ -181,10 +184,22 @@ public class Caixa extends JanelaPadrao {
                     Venda novaVenda = new Venda();
                     novaVenda.setItensVenda(listFinal);
                     novaVenda.setCaixa(Supermercado.getInstancia().getCadastro().getUsuarioLogado());
-                    String data = new Date().toString();
+                    String data = new SimpleDateFormat("dd.MM.yyyy").format(new java.util.Date());
                     novaVenda.setData(data);
-                    novaVenda.setIdVenda(RepositorioVenda.lista.size());
-
+                    int idV = 1 ;
+                    if (!Supermercado.getInstancia().getVenda().listarTodos().isEmpty()){
+                        idV = Supermercado.getInstancia().getVenda().listarTodos().size()+1 ;
+                    }
+                    
+                    novaVenda.setIdVenda(idV);
+                    try {
+                        RepositorioVenda.obterInstancia().inserir(novaVenda);
+                        RepositorioVenda rv = RepositorioVenda.obterInstancia();
+                        Supermercado.getInstancia().setVenda(rv);
+                        Supermercado.getInstancia().salvaSupermercado();
+                    } catch (Exception ex) {
+                        Logger.getLogger(Caixa.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
             case 1: {
@@ -195,8 +210,16 @@ public class Caixa extends JanelaPadrao {
                 novaVenda.setCaixa(Supermercado.getInstancia().getCadastro().getUsuarioLogado());
                 String data = new Date().toString();
                 novaVenda.setData(data);
-                novaVenda.setIdVenda(RepositorioVenda.lista.size());
-
+                novaVenda.setIdVenda(Supermercado.getInstancia().getVenda().lista.size());
+                
+            try {
+               RepositorioVenda.obterInstancia().inserir(novaVenda);
+               RepositorioVenda rv = RepositorioVenda.obterInstancia();
+               Supermercado.getInstancia().setVenda(rv);
+               Supermercado.getInstancia().salvaSupermercado();
+            } catch (Exception ex) {
+                Logger.getLogger(Caixa.class.getName()).log(Level.SEVERE, null, ex);
+            }
             }
         }
 

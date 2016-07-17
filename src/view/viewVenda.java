@@ -200,8 +200,8 @@ public class viewVenda extends javax.swing.JFrame {
             this.list.add(item);
             jTextQuantidade.setText("");
             jValorTotal.setText(calculaValorTotal() + "");
-            System.out.println(Supermercado.getInstancia().getEstoque().getItens().get(idsString).getQuantidade());
         }
+        Supermercado.getInstancia().salvaSupermercado();
     }//GEN-LAST:event_jAdicionarProdutoActionPerformed
 
     private void jPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPagamentoActionPerformed
@@ -219,20 +219,27 @@ public class viewVenda extends javax.swing.JFrame {
         model.removeRow(jTableListVenda.getSelectedRow());
         jValorTotal.setText(calculaValorTotal() + "");
         this.venda.removeItem(idsString, quantidade);
+        Supermercado.getInstancia().salvaSupermercado();
     }//GEN-LAST:event_jremoveProdActionPerformed
 
     private void jCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCancelarActionPerformed
         DefaultTableModel model = (DefaultTableModel) jTableListVenda.getModel();
-
-        while (model.getRowCount() != 0) {
+        int count = model.getRowCount();
+        while (count != 0) {
             int id = acharId((String) jProdutos.getSelectedItem(), Supermercado.getInstancia().getEstoque().getItens());
             String idsString = id + "";
-            String quantidade =  (String) model.getValueAt(jTableListVenda.getSelectedRow(), 2);
-            list.remove(jTableListVenda.getSelectedRow());
-            model.removeRow(jTableListVenda.getSelectedRow());
+            String quantidade =  model.getValueAt(0, 2)+ "";
+            list.remove(0);
+            model.removeRow(0);
             jValorTotal.setText(calculaValorTotal() + "");
             this.venda.removeItem(idsString, Integer.parseInt(quantidade));  
+            count--;
         }
+         Supermercado.getInstancia().salvaSupermercado();
+         this.dispose();
+         MenuInicial menu = new MenuInicial();
+         menu.setVisible(true);
+         
     }//GEN-LAST:event_jCancelarActionPerformed
   
 
