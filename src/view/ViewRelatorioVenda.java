@@ -124,8 +124,12 @@ public class ViewRelatorioVenda extends javax.swing.JFrame {
     @SuppressWarnings("empty-statement")
     private void jVizualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVizualizarActionPerformed
         DefaultTableModel model = (DefaultTableModel) jTableRelatorio.getModel();
-        ArrayList<Venda> vendas = Supermercado.getInstancia().getVenda().listarTodos();
+        ArrayList<Venda> vendas = Supermercado.getInstancia().getVenda().getLista();
         ArrayList<Object[]> objects = new ArrayList<Object[]>();
+        model.setRowCount(0);
+         if (!Supermercado.getInstancia().getCadastro().getUsuarioLogado().acessoGerente()) {
+                vendas = removeVendas(Supermercado.getInstancia().getCadastro().getUsuarioLogado().getNome(), vendas);
+            }
         for (int i = 0; i < vendas.size(); i++) {
             Venda venda = vendas.get(i);
             if (objects.size() == 0) {
@@ -137,7 +141,7 @@ public class ViewRelatorioVenda extends javax.swing.JFrame {
                 double calcula = (double) objects.get(posicao)[2];
                 double valor = calculaValorTotal(venda.getItensVenda()) + calcula;
                 Object[] obj = {venda.getData(), venda.getCaixa().getNome(), valor};
-                objects.set(posicao,obj);
+                objects.set(posicao, obj);
             } else {
                 double valor = calculaValorTotal(venda.getItensVenda());
                 Object[] obj = {venda.getData(), venda.getCaixa().getNome(), valor};
@@ -209,8 +213,8 @@ public class ViewRelatorioVenda extends javax.swing.JFrame {
         String data = venda.getData();
         String usuario = venda.getCaixa().getNome();
         for (int i = 0; i < objects.size(); i++) {
-            String nomeObj = (String) objects.get(i)[0];
-            String dataObj = (String) objects.get(i)[1];
+            String nomeObj = (String) objects.get(i)[1];
+            String dataObj = (String) objects.get(i)[0];
             if (nomeObj.equals(usuario) && dataObj.equals(data)) {
                 return true;
             }
@@ -221,28 +225,48 @@ public class ViewRelatorioVenda extends javax.swing.JFrame {
     private Object[] atualizaValor(ArrayList<Object[]> objects, Venda venda) {
         String data = venda.getData();
         String usuario = venda.getCaixa().getNome();
-        Object[] obj = null;
+//        Object[] obj = null;
         for (int i = 0; i < objects.size(); i++) {
             String nomeObj = (String) objects.get(i)[0];
             String dataObj = (String) objects.get(i)[1];
             if (nomeObj.equals(usuario) && dataObj.equals(data)) {
-             
+                double calcula = (double) objects.get(i)[2];
+                double valor = calculaValorTotal(venda.getItensVenda()) + calcula;
+                Object[] obj = {nomeObj, dataObj, valor};
+                return obj;
             }
         }
-        return obj;
+        return null;
+//        return obj;
     }
 
     private int verificaPosicao(Venda venda, ArrayList<Object[]> objects) {
         String data = venda.getData();
         String usuario = venda.getCaixa().getNome();
         for (int i = 0; i < objects.size(); i++) {
-            String nomeObj = (String) objects.get(i)[0];
-            String dataObj = (String) objects.get(i)[1];
+            String nomeObj = (String) objects.get(i)[1];
+            String dataObj = (String) objects.get(i)[0];
             if (nomeObj.equals(usuario) && dataObj.equals(data)) {
                 return i;
             }
         }
         return -1;
+    }
+
+    private ArrayList<Venda> removeVendas(String nome, ArrayList<Venda> lista) {
+        ArrayList<Venda> aux = new ArrayList<Venda>();
+        int cont = 0;
+        for (int j = 0; j < lista.size() ; j++) {
+        aux.add(lista.get(j));
+        }
+        
+        for (int i = 0; i < lista.size(); i++) {
+            if (!lista.get(i).getCaixa().getNome().equals(nome)){
+                aux.remove(i-cont);
+                cont++;
+            }
+        }
+        return aux;
     }
 
 }

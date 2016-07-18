@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.*;
@@ -13,7 +14,7 @@ import model.*;
  *
  * @author lfigueiredo
  */
-public class Venda {
+public class Venda implements Serializable {
 
     private int idVenda;
     private String data;

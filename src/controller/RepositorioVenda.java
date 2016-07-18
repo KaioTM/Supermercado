@@ -21,10 +21,10 @@ public class RepositorioVenda  implements Serializable {
         this.lista = new ArrayList<Venda>();
     }
     public static RepositorioVenda obterInstancia(){
-        if (RepositorioVenda.obterInstancia().instanciaRep == null){
-            RepositorioVenda.obterInstancia().instanciaRep = new RepositorioVenda();
+        if (Supermercado.getInstancia().getVenda().instanciaRep == null){
+            Supermercado.getInstancia().getVenda().instanciaRep = new RepositorioVenda();
         }
-        return  RepositorioVenda.obterInstancia().instanciaRep;
+        return  Supermercado.getInstancia().getVenda().instanciaRep;
         
     }
     public ArrayList<Venda> listarTodos(){
@@ -116,6 +116,8 @@ public class RepositorioVenda  implements Serializable {
     } 
 
     public ArrayList<Venda> getLista() {
+        if(this.lista == null)
+             this.lista = new ArrayList<Venda>();
         return lista;
     }
 
