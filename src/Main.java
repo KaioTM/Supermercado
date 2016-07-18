@@ -1,7 +1,6 @@
 
 import view.*;
 import controller.Supermercado;
-import controller.Venda;
 
 public class Main {
 

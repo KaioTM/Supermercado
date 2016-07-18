@@ -17,13 +17,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Item;
-import model.Usuario;
 
 /**
  *
  * @author kaio.teixeira
  */
-public class Caixa extends JanelaPadrao {
+public class Caixa extends javax.swing.JFrame {
 
     private String valorTotal;
     private ArrayList<Item> listFinal;
@@ -181,6 +180,7 @@ public class Caixa extends JanelaPadrao {
                 } finally {
                     txtTroco.setText(String.valueOf(pagamentoDinheiro.getTroco()));
                     txtValorPendente.setText(String.valueOf(pagamentoDinheiro.getPagamentoPendente()));
+                    
                     Venda novaVenda = new Venda();
                     novaVenda.setItensVenda(listFinal);
                     novaVenda.setCaixa(Supermercado.getInstancia().getCadastro().getUsuarioLogado());
@@ -200,6 +200,11 @@ public class Caixa extends JanelaPadrao {
 //                        RepositorioVenda rv = RepositorioVenda.obterInstancia();
 //                        Supermercado.getInstancia().setVenda(rv);
                         Supermercado.getInstancia().salvaSupermercado();
+                        if (txtValorPendente.getText().equals("0.0")){
+                            JOptionPane.showMessageDialog(null, "Pagamento Realizado com sucesso");
+                            this.dispose();
+                            MenuInicial.init();
+                        }
                     } catch (Exception ex) {
                         Logger.getLogger(Caixa.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -217,10 +222,16 @@ public class Caixa extends JanelaPadrao {
                 novaVenda.setIdVenda(Supermercado.getInstancia().getVenda().getLista().size());
 
                 try {
+                    if (pagamentoCartao.Pagamento(Float.parseFloat(txtTotalCompra.getText()), Float.parseFloat(txtValorRecebido.getText()))){
+                        JOptionPane.showMessageDialog(null, "Pagamento Realizado com sucesso");
+                    }
                     RepositorioVenda.obterInstancia().inserir(novaVenda);
                     RepositorioVenda rv = RepositorioVenda.obterInstancia();
                     Supermercado.getInstancia().setVenda(rv);
                     Supermercado.getInstancia().salvaSupermercado();
+                    this.dispose();
+                    MenuInicial.init();
+                    
                 } catch (Exception ex) {
                     Logger.getLogger(Caixa.class.getName()).log(Level.SEVERE, null, ex);
                 }

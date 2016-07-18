@@ -28,7 +28,6 @@ public class GerenciarEstoque extends JanelaPadrao {
     private void initComponents() {
 
         btnCadastrarProduto = new javax.swing.JButton();
-        btnAlterarProduto = new javax.swing.JButton();
         btnRemoverProduto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -39,13 +38,6 @@ public class GerenciarEstoque extends JanelaPadrao {
         btnCadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastrarProdutoActionPerformed(evt);
-            }
-        });
-
-        btnAlterarProduto.setText("Alterar Produto");
-        btnAlterarProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlterarProdutoActionPerformed(evt);
             }
         });
 
@@ -61,23 +53,20 @@ public class GerenciarEstoque extends JanelaPadrao {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(313, 313, 313)
+                .addGap(312, 312, 312)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnCadastrarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRemoverProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAlterarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(98, 98, 98))
+                    .addComponent(btnCadastrarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                    .addComponent(btnRemoverProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(99, 99, 99))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(114, 114, 114)
+                .addGap(135, 135, 135)
                 .addComponent(btnCadastrarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRemoverProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAlterarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         btnCadastrarProduto.getAccessibleContext().setAccessibleDescription("");
@@ -99,11 +88,6 @@ public class GerenciarEstoque extends JanelaPadrao {
         removerProduto.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRemoverProdutoActionPerformed
-
-    private void btnAlterarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarProdutoActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnAlterarProdutoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,7 +132,6 @@ public class GerenciarEstoque extends JanelaPadrao {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAlterarProduto;
     private javax.swing.JButton btnCadastrarProduto;
     private javax.swing.JButton btnRemoverProduto;
     // End of variables declaration//GEN-END:variables

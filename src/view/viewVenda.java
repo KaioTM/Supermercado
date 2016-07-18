@@ -91,6 +91,8 @@ public class viewVenda extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTableListVenda);
 
+        jValorTotal.setEditable(false);
+
         jPagamento.setText("Finalizar Pagamento");
         jPagamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,6 +210,7 @@ public class viewVenda extends javax.swing.JFrame {
         Caixa novoCaixa = new Caixa(jValorTotal.getText(),this.list,this);
         novoCaixa.setVisible(true);
         this.setVisible(false);
+        
     }//GEN-LAST:event_jPagamentoActionPerformed
 
     private void jremoveProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jremoveProdActionPerformed

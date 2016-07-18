@@ -1,8 +1,6 @@
 package view;
 
-import controller.Cadastro;
 import controller.Supermercado;
-import model.Usuario;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
